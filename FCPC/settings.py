@@ -31,7 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    # 'bootstrapform',
+    'bootstrap5',
+    'core',
+    'moduloSocios'
 ]
 
 MIDDLEWARE = [
@@ -121,7 +124,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # El tiempo limite en que un usuario puede estar en linea
-LOGIN_URL = 'signin'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'core:signin'
+LOGOUT_URL = 'core:logout'
+LOGIN_REDIRECT_URL = 'core:inicio'
 

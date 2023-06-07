@@ -1,1 +1,35 @@
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+$danger:#a80000;
+$success: #084218;
+$border-radius: 1rem;
+$input-btn-padding-x:.7rem ;
+
+// paleta de colores
+$custom-colors   : (
+    "darkcs": #191A19,
+    "primarycs": #1E5128,
+    "infocs": #4E9F3D,
+    "lightcs": #ffffff
+    
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+// backgroud del form-control
+$input-bg: #e7efffa6;
+
+//color del label
+$form-label-color:  #000000;
+
+//Resplandor al hacer focus al form-control
+$focus-ring-color:#0000005e;
+
+
+
+
+
+
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";

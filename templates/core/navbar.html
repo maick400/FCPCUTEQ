@@ -1,8 +1,30 @@
-<ul>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-    <li>item</li>
-    <li><a href="{% url 'core:logout' %}">Cerrar sesión</a></li>
-</ul>
+{% load bootstrap5 %}
+{% load static %}
+
+<nav class="navbar bg-primarycs">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+           <span class="text-light">
+            
+               FONDO COMPLEMENTARIO PREVISIONAL CERRADO UTEQ
+           </span> 
+      </a>
+
+      <ul class="nav-item">
+        <!-- {% bootstrap_messages %} -->
+
+            <li class="nav-item"><a href="{% url 'core:logout' %}">Cerrar sesión</a></li>
+    </ul>
+
+    </div>
+
+    
+
+    
+
+</nav>
+
+
+
+

@@ -1,4 +1,7 @@
 
 {% comment %} Bootstrap {% endcomment %}
-<link rel="stylesheet" href="../../static/css/bootstrap.css">
-<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+{% load static %}
+<link rel="stylesheet" href=" {% static 'css/bootstrap.css' %}  ">
+<script src=" {% static 'js/bootstrap.min.js' %} "></script>
+<script src=" {% static 'js/bootstrap.bundle.min.js' %} "></script>
+

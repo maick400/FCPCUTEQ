@@ -3,13 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
-
-
 # Create your views here.
-
-
-def signin(request):
+def iniciar_sesion(request):
     page_title = 'Iniciar sesión'
     
     if request.method == 'POST':
@@ -21,18 +16,21 @@ def signin(request):
         else:
             # si existe lo logeamos 
             login(request, user) 
-            return redirect('home')
+            return redirect('core:home')
 
-    # render for get
-    return render(request,"core/signin.html",{'title':page_title})
-
-def logout(request):
+    # verifica si el usuario esta iniciado sesión, en caso de estarlo, lo redirige al "home", caso contrario, renderiza "Iniciar sesion"
+    if not request.user.is_authenticated:
+        return render(request, 'core/signin.html', {'title':page_title})
+    else:
+        return redirect('core:home')
+    
+    
+def cerrar_sesion(request):
+    # funcion interna de django que cierra sesion 
     logout(request)
     return redirect('core:signin')
-    
-    
-    
+
 @login_required
-def home(request):
+def inicio(request):
     page_title = 'Inicio'
     return render(request,"core/home.html",{'title':page_title})
