@@ -6,5 +6,5 @@ from moduloSocios.views import *
 app_name = 'socio'
 
 urlpatterns = [
-    path('create/', crear_socio, name='crear_socio')
+    path( 'create/', crear_socio, name='crear_socio')
 ]

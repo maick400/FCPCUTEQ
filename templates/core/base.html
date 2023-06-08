@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,10 +9,28 @@
     <title>{{title}}</title>
 </head>
 <body>
-    {% include 'core/navbar.html' %}
-    {% include 'core/slidebar.html' %}
-    {% block content %}
-    {% endblock content %}
+    {% include 'core/aside-menu.html' %}
+    
+    <section class="home-section overflow-auto">
+        <div class="home-content sticky-top">
+            <i><box-icon class="btn-menu" color="black" size="lg" type='solid' name='cog'></box-icon></i> 
+            <span class="text"></span>
+        </div>
+        <div class="container-fluid pt-2 p-5">
+            {% block content%}
+    
+            {% endblock content%}
+        </div>
+        <script src="{% static  'js/aside-menu.js' %}"></script>
+
+
+    </section>
+
+
+
+
+
+    
 </body>
 </html>
 

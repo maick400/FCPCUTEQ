@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required, login_required
 from moduloSocios.forms import *
 
+
+
+@login_required
+@permission_required('moduloSocios.crear_socio_prms')
 # Create your views here.
 def crear_socio(request):
     

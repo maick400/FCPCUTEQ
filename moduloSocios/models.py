@@ -19,10 +19,22 @@ class Socio(models.Model):
         return self.nombres
     
     class Meta: 
+        app_label = "moduloSocios"
         managed = True
         db_table = 'socios'
         verbose_name = 'un Socio'
         verbose_name_plural = 'Socios'
+        permissions = [
+            ("crear_socio_prms", "Crear socios"), 
+            ("modificar_socio_prms", "Modificar socios"), 
+            ("eliminar_socio_prms", "Eliminar socios"), 
+            ("ver_socio_prms", "Ver socios"), 
+
+            ]
+        
+        
+        
+        
 
         
         
