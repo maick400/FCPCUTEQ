@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     # 'bootstrapform',
     'bootstrap5',
     'core',
-    'moduloSocios'
+    'moduloSocios',
+    'modulocreditos'
 ]
 
 MIDDLEWARE = [

@@ -25,5 +25,6 @@ urlpatterns = [
         path('Admin/', admin.site.urls),
     path('', include('core.urls'), name='core'),
     path('socios/', include('moduloSocios.urls'), name='socios'),
+    path('creditos/', include('modulocreditos.urls'), name='socios'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

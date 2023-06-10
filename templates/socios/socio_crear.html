@@ -1,19 +1,20 @@
 {% extends 'core/base.html' %}
+
 {% load bootstrap5 %}
 
-{% block content %}
 {% comment %} Formulario {% endcomment %}
-<form action="" method="POST" class="p-4 bg-light" >
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-4 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" >
     {% csrf_token %}
     {% bootstrap_form frm  %}
 
-    {% buttons %}
+    {% buttons %}   
 {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary" %}
 
 {% endbuttons %}
 
 </form> 
-
+{% endblock content %}
 {% comment %} Botones {% endcomment %}
 
-{% endblock content %}

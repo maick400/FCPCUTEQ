@@ -1,17 +1,14 @@
 {% load static %}
 
 <div class="sidebar close">
-    <div class="logo-details">
+    <div class="logo-details ">
       <!-- <i class='bx bxl-c-plus-plus'></i> -->
-      <i><box-icon color="white" size="lg" type='solid' name='bank'></box-icon></i> 
+      <i><box-icon class="btn-menu" color="white" size="lg" type='solid' name='bank'></box-icon></i> 
 
-      <span class="logo_name">FCPC-UTEQ</span>
+      <span class="logo_name btn-menu">FCPC-UTEQ</span>
     </div>
 
-    <div class="d-flex btn-menu justify-content-center">
-      <!-- <i class='bx bxl-c-plus-plus'></i> -->
-      <i><box-icon color="blue" size="lg" type='solid' name='cog'></box-icon></i> 
-    </div>
+   
     
     <ul class="nav-links">
       <li>
@@ -54,6 +51,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Aportes</a></li>
           <li><a href="#">Descuento a partícipes</a></li>
+          <li><a href=" {% url 'creditos:crear_tipo_credito' %} ">Crear tipo de credito</a></li>
           <li><a href="#">Solicitud de credito</a></li>
           <li><a href="#">Créditos</a></li>
           <li><a href="#">Reportes</a></li>
