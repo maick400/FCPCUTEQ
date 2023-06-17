@@ -11,6 +11,7 @@ class TablaAmortizacion:
         self.cuotas = cuotas
         self.seguros = seguro
         self.tabla = self.francesa()
+        
     def francesa(self) -> None:
             
         if self.periodo == 'MEN':
@@ -32,11 +33,9 @@ class TablaAmortizacion:
                 restante=cuota[4]
                 )
                 )
-        print(list(tb_amortizacion))
 
         return tb
     
-
         
     class Cuota():
         def __init__(self, numero_cuota, valor_neto, interes, seguro, restante ) -> None:  
@@ -52,8 +51,7 @@ tb1 = TablaAmortizacion('MEN', 15000, 48, 0.12, 0.00104)
 total_neto = 0
 total_interes = 0
 
-# for cuota in tb1.tabla:
-#     print(cuota.numero_cuota,cuota.valor_neto, cuota.interes, cuota.total, cuota.restan)
-# print((total_neto), (total_interes))
+for cuota in tb1.tabla:
+    print(cuota.numero_cuota,cuota.valor_neto, cuota.interes, cuota.total, cuota.restan)
+print((total_neto), (total_interes))
 
-print(round(4.125121,2))

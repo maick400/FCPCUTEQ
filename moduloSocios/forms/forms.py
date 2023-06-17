@@ -1,5 +1,6 @@
+
 from django import  forms
-from moduloSocios.models import Socio
+from moduloSocios.models.models import Socio
 from moduloSocios.choises import * 
 
 class frm_crear_socio(forms.ModelForm):   

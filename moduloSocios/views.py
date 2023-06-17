@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required, login_required
-from moduloSocios.forms import *
+from moduloSocios.forms.forms  import *
 
 
 
