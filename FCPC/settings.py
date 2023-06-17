@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'core',
     'moduloContable',
-    'modulocreditos'
+    'modulocreditos',
+    'moduloFondo'
 ]
 
 MIDDLEWARE = [
