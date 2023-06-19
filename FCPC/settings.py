@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'core',
     'moduloContable',
-    'modulocreditos',
+    'moduloCreditos',
     'moduloFondo'
 ]
 
