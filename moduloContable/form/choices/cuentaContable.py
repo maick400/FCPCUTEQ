@@ -11,7 +11,3 @@ MAYOR_MOVIMIENTO = (
     ('MOV',"Moviemiento"),
 )
 
-BOLEANS = (
-    (1,"Si"),
-    (0,"No"),
-)
