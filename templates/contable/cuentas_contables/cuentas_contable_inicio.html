@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<form action="" method="POST" class="p-4 mt-4 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" >
+<form action="" method="" class="p-4 mt-4 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" >
 
     {% csrf_token %}
     {% comment %} {% bootstrap_form frm  %}
@@ -18,35 +18,12 @@
 
     
 
- {% buttons %}
+{% buttons %}
 {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary" %}
-
 {% endbuttons %} 
 
 </form> 
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var agregarLineaBtn = document.getElementById('agregar-linea');
-        agregarLineaBtn.addEventListener('click', function() {
-          var formset = document.getElementById('id_detallefactura_set-TOTAL_FORMS');
-          var totalFormCount = parseInt(formset.attributes.value);
-          var newFormCount = totalFormCount + 1;
-          
-          // Clonar la última línea del formulario y actualizar los índices de los campos
-          var lastForm = document.querySelector('.formset-row:last-child');
-          var newForm = lastForm.cloneNode(true);
-          newForm.innerHTML = newForm.innerHTML.replace(/__prefix__/g, newFormCount);
-          
-          // Actualizar el valor del campo TOTAL_FORMS
-          formset.value = newFormCount;
-          
-          // Agregar la nueva línea al final del formulario en línea
-          lastForm.parentNode.insertBefore(newForm, null);
-        });
-      });      
-</script>
 
 
 
