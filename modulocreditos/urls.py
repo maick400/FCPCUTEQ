@@ -1,5 +1,5 @@
 from django.urls import path
-from modulocreditos.views import *
+from moduloCreditos.views import *
 
 app_name = 'creditos'
 
