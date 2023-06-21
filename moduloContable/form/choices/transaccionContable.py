@@ -1,1 +1,4 @@
-TIPO_TRANSACCION_CONTABLE_SELECT=(("1","HOLA"),("2","gggg"))
+ESTADOC = (
+    (1,"Si"),
+    (0,"No"),
+)

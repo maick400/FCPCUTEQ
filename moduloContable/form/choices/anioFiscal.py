@@ -4,4 +4,3 @@ ESTADOC = (
     ("ABR","ABIERTO"),
     ("IND","INDEFINIDO")
 )
-
