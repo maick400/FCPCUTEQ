@@ -1,4 +1,4 @@
-
+from django.urls import reverse_lazy
 from django import  forms
 from moduloSocios.models.models import Socio
 from moduloSocios.choises import * 
@@ -59,6 +59,28 @@ class frm_crear_socio(forms.ModelForm):
             },
         
         }
+        
+class Frm_filtros_busqueda(forms.ModelForm):
+    class Meta: 
+        model = Socio
+        fields = (
+            'cedula',
+        ) 
+
+        labels = {
+            'cedula':'Cedula/Nombres'
+        }
+        
+        widgets = {
+            'cedula' : forms.TextInput(attrs={
+                'hx-post':reverse_lazy('socio:buscar_socio'),
+                'hx-trigger':'keyup changed delay:200ms',
+                'hx-target':'#resultados-busqueda-socios',
+                'name':'general'
+                }),
+            
+        }
+        
         
         
         
