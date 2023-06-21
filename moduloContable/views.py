@@ -5,6 +5,9 @@ from moduloContable.form.frmCuentaContable import *
 from moduloContable.form.frmAsientoContable import *
 from moduloContable.form.frmTipoTransaccionContable import *
 from moduloContable.form.frmTransaccionContable import *
+from moduloContable.model.model_CNT_Tipo_Transaccion_Contable import *
+from moduloContable.model.mode_SIS_Tipo_Documentos import *
+from moduloContable.form.frmTipoDocumentos import *
 
 # Create your views here.
 
@@ -56,6 +59,12 @@ def tipoTransaccion(request):
     if request.method=="GET":
         return render(request,'contable/cuentas_contables/tipo_transaccion_contable_crear.html',
                        {'title':pag_titulo,'frm':frmTipoTransaccion})
+    if request.method=="POST":
+        dato=request.POST["tipo_transaccion"]
+        modelotipo=Model_CNT_Tipo_Transaccion_Contable(tipo_transaccion=dato)
+        modelotipo.save()
+        return render(request,'contable/cuentas_contables/tipo_transaccion_contable_crear.html',
+            {'title':pag_titulo,'frm':frmTipoTransaccion})
     
 
 def transaccionContable(request):
@@ -65,3 +74,11 @@ def transaccionContable(request):
     if request.method=="GET":
         return render(request,'contable/cuentas_contables/transaccion_contable.html',
                        {'title':pag_titulo,'frm':frmTransaccionContable})
+    
+
+def tipoDocumento(request):
+    pag_titulo="Asiento Contable"
+    frmTipoDoc=frmTipoDocumentos
+    if request.method=="GET":
+        return render(request,'contable/cuentas_contables/tipo_documento/tipo_documento.html',
+                       {'title':pag_titulo,'frm':frmTipoDoc})
