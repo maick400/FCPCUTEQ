@@ -5,7 +5,7 @@ app_name = 'moduloContable'
 
 urlpatterns = [
     # cuentas contables 
-    #path('cuentas_contables/', cuentas_contable_inicio, name='cuentas_contable_inicio' ),
+    path('cuentas_contables/', cuentas_contable_inicio, name='cuentas_contable_inicio' ),
     path('anio_fiscal/crear/', anio_contable, name='anio_fiscal_crear' ),
     path('periodo_fiscal/crear/', periodo_Fiscal, name='periodo_fiscal_crear'),
     path('cuentas_contables/crear/', cuentas_contables, name='cuentas_contable_crear'),
