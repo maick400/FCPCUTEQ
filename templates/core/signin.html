@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "core/dependencies.html" %}
     <title>{{title}}</title>
+    <style>
+        #holi{
+            background-image: url("https://sga.uteq.edu.ec/media/fondo_sga/2022/10/20/RECTORADO_SGA_jQBX4Wj.jpg");
+        }
+    </style>
 </head>
-<body>
-<div class="d-flex justify-content-center align-items-center vh-100">
+<body >
+    
+<div id="holi" class="d-flex justify-content-center align-items-center vh-100">
     <form action="{% url 'core:signin' %}" method="POST" class="for col col-6 rounded-5 bg-light p-5 shadow">
         {% csrf_token %}
         <label for="username" class="form-label">Usuario</label>
