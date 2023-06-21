@@ -2,7 +2,7 @@ from django.db import models
 
 class Model_FND_Empleado_Cargo(models.Model):
     id_cargo_empleado =  models.BigAutoField(primary_key=True)
-    cargo = models.CharField(max_length=200,  blank=False, null=False)
+    cargo = models.CharField(max_length=200,  blank=False, null=False,unique=True)
 
     class Meta:
         app_label = "moduloFondo"

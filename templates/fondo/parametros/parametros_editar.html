@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+{% csrf_token %}
+<!-- Este if valida si existe la ID sino pues no carga el formulario evitando caidas -->
+{% if socio.id_socio %}
+    <form action="{% url 'fondo:editar_parametros' all_parametros.id %}" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 rounded shadow">
+      
+        {{form|bootstrap}}
+        
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+{% endif %}
+
+{% endblock content %}
+{% comment %} Botones {% endcomment %}
+

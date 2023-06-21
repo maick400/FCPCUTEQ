@@ -1,5 +1,7 @@
-BOLEANS = (
-    (1,"Si"),
-    (0,"No"),
+ESTADOC = (
+    ("TER","TERMINADO"),
+    ("CER","CERRADO"),
+    ("ABR","ABIERTO"),
+    ("IND","INDEFINIDO")
 )
 

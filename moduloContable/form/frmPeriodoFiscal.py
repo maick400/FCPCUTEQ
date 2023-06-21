@@ -1,31 +1,30 @@
 from django import forms
 from moduloContable.model.model_CNT_Periodo_Fiscal import * 
-from moduloContable.form.campos import *
-from moduloContable.form.choices.estado import *
+from moduloContable.form.choices.PeriodoFiscal import *
 
 class frmPeriodo_Fiscal(forms.ModelForm):
     class Meta:
         model=Model_CNT_Periodo_Fiscal
         fields=(
-            NOMBRE_PERIODO_FISCAL,
-            INICIO_PERIODO_FISCAL,
-            FIN_PERIODO_FISCAL,
-            ESTADO
+            "nombre",
+            "inicio",
+            "fin",
+            "estado"
         )
 
         labels={
-            NOMBRE_PERIODO_FISCAL:"Nombre",
-            INICIO_PERIODO_FISCAL:"Inicio",
-            FIN_PERIODO_FISCAL:"Fin",
-            ESTADO:"estado",
+            "nombre":"Nombre",
+            "inicio":"Inicio",
+            "fin":"Fin",
+            "estado":"estado",
         }
 
 
         widgets = {
-            NOMBRE_PERIODO_FISCAL:forms.TextInput(),
-            INICIO_PERIODO_FISCAL:forms.DateInput(attrs={"type":"date"}),
-            FIN_PERIODO_FISCAL:forms.DateInput(attrs={"type":"date"}),
-            ESTADO:forms.Select(choices=BOLEANS)
+            "nombre":forms.TextInput(),
+            "inicio":forms.DateInput(attrs={"type":"date"}),
+            "fin":forms.DateInput(attrs={"type":"date"}),
+            "estado":forms.Select(choices=ESTADOC)
         }
 
 
@@ -34,7 +33,7 @@ class frmPeriodo_Fiscal(forms.ModelForm):
         }
 
         error_messages = {
-            NOMBRE_PERIODO_FISCAL:{
+            "nombre":{
                 'unique':'Periodo ya existente'
             }
         }

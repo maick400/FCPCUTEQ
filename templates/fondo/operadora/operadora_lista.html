@@ -1,0 +1,111 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+
+        <!-- El div para el buscador junto con su form pero sin accion -->
+        <div class="row mb-3">
+            <div class="col">
+                <form action="" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_term"
+                            placeholder="Buscar una operadora" value="{{ search_term }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Operadora</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for operadora in operadoras_list %}
+                            <tr>
+                                <td>{{ operadora.operadora }}</td>
+                                <td>
+                                   
+                                    <form action="{% url 'fondo:editar_operadora_telefonica' operadora.operadora_id %}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                      </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- El div para la paginacion -->
+        <div class="row">
+            <div class="col">
+                <nav aria-label="Paginación">
+                    <ul class="pagination justify-content-center">
+                        {% if operadoras_list.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ operadoras_list.previous_page_number }}"
+                                aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in operadoras_list.paginator.page_range %}
+                        {% if operadoras_list.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if operadoras_list.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ operadoras_list.next_page_number }}"
+                                aria-label="Siguiente">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}

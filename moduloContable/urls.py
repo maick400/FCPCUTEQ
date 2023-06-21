@@ -12,4 +12,5 @@ urlpatterns = [
     path('asiento_contable/crear/', asiento_contable, name='asiento_contable_crear'),
     path('tipo_transaccion_contable/crear/', tipoTransaccion, name='tipo_transaccion_contable_crear'),
     path('transaccion_contable/', transaccionContable, name='transaccion_contable'),
+    path('tipo_documento/crear/', tipoDocumento, name='tipo_documento_crear'),
 ]

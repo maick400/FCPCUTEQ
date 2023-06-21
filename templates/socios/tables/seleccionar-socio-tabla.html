@@ -1,0 +1,32 @@
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cédula</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Seleccionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for socio in socios %}
+        <tr>
+        <th scope="row">1</th>
+        <td>{{socio.nombres}}</td>
+        <td>{{socio.cedula}}</td>
+        <td>
+            <div class="row text-end">
+                <button class="btn btn-success btn-sm">
+                    <box-icon name='list-check'></box-icon>
+                </button>
+            </div>
+        </td>
+        </tr>
+        
+        
+        
+        {% endfor %}
+    </tbody>
+
+    
+</table>
