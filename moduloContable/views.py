@@ -65,3 +65,5 @@ def transaccionContable(request):
     if request.method=="GET":
         return render(request,'contable/cuentas_contables/transaccion_contable.html',
                        {'title':pag_titulo,'frm':frmTransaccionContable})
+        
+        

@@ -19,6 +19,7 @@ def crear_socio(request):
 
     
     if request.method == 'GET':
+        messages.success(request, "Se ha cargado la view ")
         return render(request, 'socios/socio_crear.html', {'title':pag_titulo,'frm':frm_crear, 'filtros':filtros ,'socios':socios})
     
     
@@ -39,8 +40,10 @@ def modify(request):
 def buscar_socio(request):
     if request.method == 'POST':
         cedula = request.POST.get("cedula")
-    
-        socios = Socio.objects.all().filter( Q(cedula__icontains= cedula) | Q(nombres__icontains=cedula) )
+        messages.warning (request, "Se han cargado los datos correctamente")
+
+        messages.success (request, "Se han cargado los datos correctamente")
+        socios = Socio.objects.all().filter( Q(cedula__icontains= cedula) | Q(nombres__icontains=cedula))
         return render (request, 'socios/tables/seleccionar-socio-tabla.html', 
                        { 
                         'socios':socios

@@ -28,9 +28,15 @@ class frm_crear_cuenta_contable(forms.ModelForm):
 
         widgets = {
             NOMBRE_CUENTA_CONTABLE:forms.TextInput(),
-            NATURALEZA_CONTABLE:forms.Select(choices=NATURALEZA),
-            MOVIMIENTO_MAYOR_CONTABLE:forms.Select(choices=MAYOR_MOVIMIENTO),
-            NIVEL_CONTABLE:forms.Select(choices=NIVEL),
+            NATURALEZA_CONTABLE:forms.Select(
+                # choices=NATURALEZA
+                ),
+            MOVIMIENTO_MAYOR_CONTABLE:forms.Select(
+                # choices=MAYOR_MOVIMIENTO
+                ),
+            NIVEL_CONTABLE:forms.Select(
+                # choices=NIVEL
+                                        ),
             CUC_REG_CONTABLE:forms.TextInput(),
             ESTADO:forms.Select(choices=BOLEANS)
         }
