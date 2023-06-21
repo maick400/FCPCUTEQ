@@ -25,8 +25,8 @@ urlpatterns = [
         path('Admin/', admin.site.urls),
     path('', include('core.urls'), name='core'),
     path('socios/', include('moduloSocios.urls'), name='socios'),
-    path('creditos/', include('modulocreditos.urls'), name='creditos'),
+    path('creditos/', include('moduloCreditos.urls'), name='creditos'),
     path('contable/', include('moduloContable.urls'), name='contable'),
-
+    path('fondo/', include('moduloFondo.urls'), name='fondo'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
