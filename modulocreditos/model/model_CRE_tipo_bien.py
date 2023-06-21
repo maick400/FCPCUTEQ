@@ -4,7 +4,7 @@ class Model_CRE_tipo_bien(models.Model):
     id_tipo_bien =  models.BigAutoField(primary_key=True)
     nombre_bien = models.CharField(max_length=100, null=False, blank=False)
     avaluo = models.DecimalField(max_digits=12, decimal_places=2, null=False, blank = False)
-    observacion = models.TextField(max_length=200, null=True, blank=True)
+    observacion = models.CharField(max_length=500, null=True, blank=True)
 
     class Meta:
         app_label = "moduloCreditos"
