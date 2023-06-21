@@ -1,0 +1,1 @@
+TIPO_TRANSACCION_CONTABLE_SELECT=(("1","HOLA"),("2","gggg"))
