@@ -1,68 +1,70 @@
 from django import forms
 from moduloContable.model.model_CNT_Asiento_Contable import * 
 from moduloContable.form.choices.asientoContable import *
+from moduloContable.form.campos import *
 from moduloContable.form.choices.estado import *
-import datetime
 
 class frmAsiento_Contable(forms.ModelForm):
     class Meta:
         model=Model_Asiento_Contable
         fields=(
-            'CONT_Diario_PlantillaID',
-            'periodo_fiscal',
-            'Sis_Tipo_DocumentosCodigo',
-            'id_transaccion_contable',
-            'transaccion_contable',
-            'numero_transaccion',
-            'fecha_emision',
-            'descripcion',
-            'documento',
-            'numero_documento',
-            'nombre_persona1',
-            'estado',
-            'nombre_representante',
-            'total_debe',
-            'total_haber',
-            'balance',
-            'estado',
+            #NOMBRE_CUENTA_AC,
+            #DETALLE,
+            #DEBE,
+            #HABER,
+            #PERIODO_FISCAL,
+            #TIPO_DOCUMENTO,
+            TRANSACCION_CONTABLE,
+            DESCRIPCION,
+            DOCUMENTO,
+            NUMERO_DOCUMENTO,
+            NOMBRE_PERSONA,
+            NOMBRE_REPRESENTANTE,
+            TOTAL_DEBE,
+            TOTAL_HABER,
+            BALANCE,
+            SYSTEM
         )
+        
+        
 
         labels={
-            'CONT_Diario_PlantillaID':'Plantilla',
-            'periodo_fiscal':'Periodo_Fiscal',
-            'Sis_Tipo_DocumentosCodigo':'Documento',
-            'id_transaccion_contable':'transaccion',
-            'transaccion_contable':'Transacción',
-            'numero_transaccion':'N° Transacción',
-            'fecha_emision':'Fecha',
-            'descripcion':'Descripción',
-            'documento':'Documento',
-            'numero_documento': 'N° Documento',
-            'nombre_persona1':'Personal',
-            'nombre_representante':'Representante actual',
-            'total_debe': 'Total debe',
-            'total_haber':'Total haber',
-            'balance':'Balance',
-            'estado':'Estado',
+            #NOMBRE_CUENTA_AC:"Nombre Cuenta",
+            #DETALLE:"Naturaleza",
+            #DEBE:"Movimiento Mayor",
+            #HABER:"Nivel",
+            #PERIODO_FISCAL:"Cuc Reg",
+            #TIPO_DOCUMENTO:"Estado",
+            TRANSACCION_CONTABLE:"Transaccion Contable",
+            DESCRIPCION:"Descripcion",
+            DOCUMENTO:"Documento",
+            NUMERO_DOCUMENTO:"Numero Documento",
+            NOMBRE_PERSONA:"Nombre Persona",
+            NOMBRE_REPRESENTANTE:"Nombre Representante",
+            TOTAL_DEBE:"Total Debe",
+            TOTAL_HABER:"Total Haber",
+            BALANCE:"Balance",
+            SYSTEM:"Estado"
         }
-        
+
+
         widgets = {
-            'CONT_Diario_PlantillaID':forms.Select(),
-            'periodo_fiscal':forms.Select(),
-            'Sis_Tipo_DocumentosCodigo':forms.Select(),
-            'id_transaccion_contable': forms.Select(),
-            'transaccion_contable':forms.TextInput(attrs={'disabled':'True'}),
-            'numero_transaccion':forms.NumberInput(attrs={'disabled':'True'}),
-            'fecha_emision':forms.TextInput(attrs={'value':datetime.datetime.now, 'disabled':'True'}),
-            'descripcion':forms.TextInput(),
-            'documento':forms.TextInput(attrs={'disabled':'false'}),
-            'numero_documento': forms.TextInput(),
-            'nombre_persona1':forms.TextInput(attrs={'disabled':'True'}),
-            'nombre_representante':forms.TextInput(),
-            'total_debe': forms.NumberInput(attrs={'disabled':'True'}),
-            'total_haber':forms.NumberInput(attrs={'disabled':'True'}),
-            'balance':forms.NumberInput(attrs={'disabled':'True'}),
-            'estado':forms.TextInput(attrs={'disabled':'True'}),
+            #NOMBRE_CUENTA_AC:forms.Select(choices=NOMBRE_CUENTA_SELECT),
+            #DETALLE:forms.TextInput(),
+            #DEBE:forms.TextInput(),
+            #HABER:forms.TextInput(),
+            #PERIODO_FISCAL:forms.Select(choices=NOMBRE_CUENTA_SELECT),
+            #TIPO_DOCUMENTO:forms.Select(choices=TIPO_DOCUMENTO_SELECT),
+            TRANSACCION_CONTABLE:forms.Select(choices=TRANSACCION_CONTABLE_SELECT),
+            DESCRIPCION:forms.TextInput(),
+            DOCUMENTO:forms.FileInput(),
+            NUMERO_DOCUMENTO:forms.TextInput(),
+            NOMBRE_PERSONA:forms.TextInput(),
+            NOMBRE_REPRESENTANTE:forms.TextInput(),
+            TOTAL_DEBE:forms.TextInput(),
+            TOTAL_HABER:forms.TextInput(),
+            BALANCE:forms.TextInput(),
+            SYSTEM:forms.Select(choices=BOLEANS),
         }
 
 
@@ -71,7 +73,7 @@ class frmAsiento_Contable(forms.ModelForm):
         }
 
         error_messages = {
-            "nombre_cuenta":{
+            NOMBRE_CUENTA_AC:{
                 'unique':''
             }
         }
