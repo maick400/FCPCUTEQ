@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+{% csrf_token %}
+
+{% if tipo_descuento.id_tipo_descuento %}
+    <form action="{% url 'fondo:editar_tipo_descuento' tipo_descuento.id_tipo_descuento %}" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 rounded shadow">
+      
+
+
+        {{form|bootstrap}}
+        
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </form>
+{% endif %}
+
+{% endblock content %}
+{% comment %} Botones {% endcomment %}
+

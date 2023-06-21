@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import permission_required, login_required
 from moduloSocios.forms.forms  import *
 
 
-
 @login_required
 @permission_required('moduloSocios.crear_socio_prms')
 # Create your views here.
@@ -30,3 +29,4 @@ def crear_socio(request):
 
 def modify(request):
     pass
+
