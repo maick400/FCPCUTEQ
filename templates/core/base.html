@@ -12,9 +12,14 @@
     {% include 'core/aside-menu.html' %}
     
     <section class="home-section overflow-auto">
-        <div class="home-content sticky-top">
+        <div class="home-content sticky-top" style="background-color: white;position: fixed;right: 0px;left: 78px;padding: 10px;">
             <span class="text">{{title}}</span>
         </div>
+
+        <!--
+        <div class="home-content sticky-top">
+            <span class="text">{{title}}</span>
+        </div>-->
         <div class=" d-flex justify-content-center container-fluid pt-2 p-5">
             {% block content%}
 

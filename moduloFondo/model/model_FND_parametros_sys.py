@@ -13,9 +13,9 @@ class Model_FND_Parametros_sys(models.Model):
     smtp_server = models.CharField(max_length=100,null=False, blank=False)
     smtp_port = models.IntegerField(null=False, blank=False)
     smtp_cuenta = models.IntegerField(null=False, blank=False)
-    smtp_password = models.BinaryField(max_length=2000,null=False, blank=False)
-    tipo_Aportaciion = models.CharField(max_length=1,null=False, blank=False)
-    valor_aplicable_aportación = models.DecimalField(max_digits=10, decimal_places=2,null=False, blank=False)
+    smtp_password = models.BinaryField(max_length=2000,null=False, blank=False,editable=True)
+    tipo_Aportacion = models.CharField(max_length=1,null=False, blank=False)
+    valor_aplicable_aportacion = models.DecimalField(max_digits=10, decimal_places=2,null=False, blank=False)
 
 
     class Meta: 

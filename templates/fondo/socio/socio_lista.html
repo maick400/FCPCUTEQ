@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+
+
+
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+
+        <!-- El div para el buscador junto con su form pero sin accion -->
+        <div class="row mb-3">
+            <div class="col">
+                <form action="" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_term"
+                            placeholder="Buscar socio" value="{{ search_term }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Género</th>
+                                <th scope="col">Tipo de prestación</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">F. nacimiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for socio in socios_list %}
+                            <tr>
+                                <td>{{ socio.email }}</td>
+                                <td>{{ socio.genero }}</td>
+                                <td>{{ socio.tipo_prestacion }}</td>
+                                <td>{{ socio.estado }}</td>
+                                <td>{{ socio.fecha_nacimiento }}</td>
+                                <td>
+                                    <form action="{% url 'fondo:editar_socio' socio.id_socio %}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                      </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- El div para la paginacion -->
+        <div class="row">
+            <div class="col">
+                <nav aria-label="Paginación">
+                    <ul class="pagination justify-content-center">
+                        {% if socios_list.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ socios_list.previous_page_number }}"
+                                aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in socios_list.paginator.page_range %}
+                        {% if socios_list.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if socios_list.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ socios_list.next_page_number }}"
+                                aria-label="Siguiente">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}
