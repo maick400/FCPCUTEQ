@@ -6,6 +6,9 @@ class Model_CRE_tipo_bien(models.Model):
     avaluo = models.DecimalField(max_digits=12, decimal_places=2, null=False, blank = False)
     observacion = models.CharField(max_length=500, null=True, blank=True)
 
+    def __str__(self) -> str:
+        return self.nombre_bien
+
     class Meta:
         app_label = "moduloCreditos"
         managed = True

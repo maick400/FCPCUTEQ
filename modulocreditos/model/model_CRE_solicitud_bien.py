@@ -10,6 +10,8 @@ class Model_CRE_solicitud_bien (models.Model):
     estado = models.CharField(max_length=1, blank=False, null=False)
     atributo = models.CharField(max_length=99999, blank=False, null=False)
 
+    def __str__(self) -> str:
+        return (self.id_solicitud_bien)
 
     class Meta:
         app_label = "moduloCreditos"

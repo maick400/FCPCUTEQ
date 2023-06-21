@@ -7,6 +7,9 @@ class Model_CRE_solicitud_documentos_bien (models.Model):
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     ruta_documento = models.CharField(max_length=999999, null=False, blank=False)
 
+    def __str__(self) -> str:
+        return (self.id_solicitud_bien)
+
     class Meta:
         app_label = "moduloCreditos"
         managed = True
