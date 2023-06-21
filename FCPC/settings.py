@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'core',
     'moduloContable',
     'moduloCreditos',
-    'moduloFondo'
+    'moduloFondo',
+    "moduloSocios"
 ]
 
 MIDDLEWARE = [

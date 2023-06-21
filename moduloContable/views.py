@@ -14,7 +14,6 @@ from moduloContable.form.frmTipoDocumentos import *
 def cuentas_contable_inicio(request):
     pass
 
-
 def anio_contable(request):
     pag_titulo="Año Fiscal"
     frmCrearAnio=frm_Anio_Fiscal 

@@ -20,7 +20,9 @@ def crear_socio(request):
 
     
     if request.method == 'GET':
-        return render(request, 'socios/socio_crear.html', {'title':pag_titulo,'frm':frm_crear, 'filtros':filtros ,'socios':socios})
+        return render(request, 'socios/socio_crear.html',
+                       {'title':pag_titulo,'frm':frm_crear, 
+                        'filtros':filtros ,'socios':socios})
     
     
     if request.method  == 'POST':
@@ -30,6 +32,14 @@ def crear_socio(request):
             messages.success(request, 'Se ha generado corectamente el formulario')
             return redirect('core:home')
         else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, 'socios/socio_crear.html', {'title':pag_titulo,'frm':frm_crear})
 
