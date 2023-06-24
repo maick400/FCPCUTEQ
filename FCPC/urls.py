@@ -24,7 +24,6 @@ from FCPC import settings
 urlpatterns = [
         path('Admin/', admin.site.urls),
     path('', include('core.urls'), name='core'),
-    path('socios/', include('moduloSocios.urls'), name='socios'),
     path('creditos/', include('moduloCreditos.urls'), name='creditos'),
     path('contable/', include('moduloContable.urls'), name='contable'),
     path('fondo/', include('moduloFondo.urls'), name='fondo'),
