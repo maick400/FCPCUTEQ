@@ -1,35 +1,72 @@
 from django.db import models
-#from Model_CNT_Periodo_Fiscal import Model_CNT_Periodo_Fiscal as PeriodoFiscal
+from moduloContable.model.model_CNT_Documento import *
+from moduloContable.model.model_CNT_Diario_Cuentas_Plantilla import * 
+from moduloContable.model.model_CNT_Periodo_Fiscal import * 
+from moduloContable.model.model_CNT_Tipo_Transaccion_Contable import * 
+from moduloFondo.model.model_FND_Personal import *
+# from moduloContable.model.model_CNT_Tipo_Transaccion_Contable import * 
 
 
 class Model_Asiento_Contable(models.Model):
 
-    #CONT_Diario_PlantillaID=models.IntegerField(null=False,blank=False)
-    #Sis_Tipo_DocumentosCodigo=models.CharField(max_length=3,blank=False,null=False)
-    #periodoFiscalId=models.ForeignKey(PeriodoFiscal,null=False,blank=False) #ya ta
-    #CONT_Transaccion_ContableCod=models.CharField(max_length=3,blank=False,null=False)
-    #PersonaId=models.ForeignKey(,blank=False,null=False)    
-    #Representante_Legal=models.IntegerField(blank=False,null=False)    
+    id_asiento_contable = models.BigAutoField(primary_key=True)
+    # foraneas
+    plantilla = models.ForeignKey(Model_CNT_Diario_Cuentas_Plantilla,null=True, blank=True, on_delete=models.CASCADE)
+    periodo_fiscal = models.ForeignKey( Model_CNT_Periodo_Fiscal,null=False, blank=False, on_delete=models.CASCADE)
+    # documento
+    documeto = models.ForeignKey(Model_CNT_Documentos, null=False, blank=False, on_delete=models.CASCADE)
+    nombre_documento = models.TextField (blank=False, null=False, max_length=200)
+    numero_documento = models.TextField()
+    # transaccion
+    transacción = models.ForeignKey(Model_CNT_Tipo_Transaccion_Contable, null=False, blank=False, on_delete=models.CASCADE)
+    transaccion_contable = models.TextField(null=False, blank=False, max_length=500)
+    numero_transaccion = models.TextField ( null=True, blank=True, max_length=200 )
+    
+    # personal que ha creado 
+    personal = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)    
+    nombre_personal = models.TextField(null=False, blank=False, max_length= 200)
+    
+    #contador 
+    contador = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    nombre_contador = models.TextField(null=False, blank=False, max_length= 200)
+    
+    #Gerente
+    gerente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    nombre_gerente = models.TextField(null=False, blank=False, max_length= 200)
+    
+    #presidente
+    presidente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    nombre_presidente = models.TextField(null=False, blank=False, max_length= 200)
     
     
-    id_asiento_contable=models.BigAutoField(primary_key=True)
-    transaccion_contable=models.CharField(max_length=3,blank=False,null=False)
-    numero_transaccion=models.IntegerField(blank=False,null=False)
-    descripcion=models.CharField(max_length=100,blank=False,null=False)    
-    documento=models.CharField(max_length=100,blank=False,null=False)
-    numero_documento=models.CharField(max_length=100,blank=False,null=False)
-    nombre_persona1=models.CharField(max_length=100,blank=False,null=False)    
-    estado=models.BooleanField(blank=False,null=False)
-    nombre_representante=models.CharField(max_length=100,blank=False,null=False)    
-    total_debe=models.FloatField(blank=False,null=False)
-    total_haber=models.FloatField(blank=False,null=False)
-    balance=models.FloatField(blank=False,null=False)
-    bit=models.BooleanField(blank=False,null=False)
+    
+    fecha_emision = models.DateTimeField(auto_now_add=True)
+    fecha_cierre = models.DateTimeField()
+    fecha_mayorización = models.DateTimeField(blank=True, null=True)
+    detalle = models.TextField (null=False, blank=False, max_length=500)
+    descripcion = models.TextField ( null= True, blank=True, max_length=500)
+    estado = models.TextField(null=False, blank=False, max_length=3)
+    total_debe = models.DecimalField(decimal_places=2, max_digits=15 )
+    total_haber  = models.DecimalField(decimal_places=2, max_digits=15)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
 
 
     class Meta: 
         app_label = "moduloContable"
         managed = True
-        db_table = 'CNT_Asiento_Contable'
+        db_table = 'cnt_Asiento_contable'
         verbose_name = 'un Socio'
         verbose_name_plural = 'Socios'
