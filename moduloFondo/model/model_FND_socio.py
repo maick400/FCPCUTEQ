@@ -10,7 +10,7 @@ class Model_FND_socio(models.Model):
     fecha_nacimiento = models.DateField(null=False, blank=False)
     tipo_prestacion = models.CharField(max_length=3, null=False, blank=False)
     estado = models.CharField(max_length=3, null=False, blank=False)
-    contacto_referencia = models.IntegerField(null=False, blank=False)
+    contacto_referencia = models.CharField(max_length=10,null=False, blank=False)
     total_ahorrado = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     total_garantizado = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
     foto = models.CharField(max_length=1000, null=False, blank=False)

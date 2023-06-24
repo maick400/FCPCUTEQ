@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Model_CNT_Anio_Fiscal(models.Model):
     
     id_AnioFiscal=models.BigAutoField(primary_key=True)

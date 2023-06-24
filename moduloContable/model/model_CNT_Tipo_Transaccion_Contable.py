@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 
 class Model_CNT_Tipo_Transaccion_Contable(models.Model):

@@ -5,10 +5,10 @@ class Model_CNT_Periodo_Fiscal(models.Model):
     id_periodo_fiscal=models.AutoField(primary_key=True)
     anio_fiscal=models.ForeignKey(Model_CNT_Anio_Fiscal,null=False,blank=False,on_delete=models.CASCADE)
     numero=models.IntegerField(blank=False,null=False)
-    nombre=models.CharField(max_length=100,blank=False,null=False)
+    nombre=models.TextField(max_length=100,blank=False,null=False)
     inicio=models.DateField(blank=False,null=False)
     fin=models.DateField(blank=False,null=False)
-    estado=models.TextField(blank=False,null=False)
+    estado=models.TextField(blank=False,null=False,max_length=3)
 
     def __str__(self) -> str:
         return self.Nombre

@@ -6,6 +6,7 @@ from django.db.models import Q
 
 
 
+
 @login_required
 @permission_required('moduloSocios.crear_socio_prms')
 # Create your views here.
@@ -19,8 +20,9 @@ def crear_socio(request):
 
     
     if request.method == 'GET':
-        messages.success(request, "Se ha cargado la view ")
-        return render(request, 'socios/socio_crear.html', {'title':pag_titulo,'frm':frm_crear, 'filtros':filtros ,'socios':socios})
+        return render(request, 'socios/socio_crear.html',
+                       {'title':pag_titulo,'frm':frm_crear, 
+                        'filtros':filtros ,'socios':socios})
     
     
     if request.method  == 'POST':
@@ -31,6 +33,14 @@ def crear_socio(request):
             return redirect('core:home')
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
+            messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, 'socios/socio_crear.html', {'title':pag_titulo,'frm':frm_crear})
 
 
@@ -40,10 +50,8 @@ def modify(request):
 def buscar_socio(request):
     if request.method == 'POST':
         cedula = request.POST.get("cedula")
-        messages.warning (request, "Se han cargado los datos correctamente")
-
-        messages.success (request, "Se han cargado los datos correctamente")
-        socios = Socio.objects.all().filter( Q(cedula__icontains= cedula) | Q(nombres__icontains=cedula))
+    
+        socios = Socio.objects.all().filter( Q(cedula__icontains= cedula) | Q(nombres__icontains=cedula) )
         return render (request, 'socios/tables/seleccionar-socio-tabla.html', 
                        { 
                         'socios':socios
