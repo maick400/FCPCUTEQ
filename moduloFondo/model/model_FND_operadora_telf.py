@@ -8,6 +8,6 @@ class Model_FND_operadora_telf(models.Model):
     class Meta:
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_operadora_telf'
+        db_table = 'fnd_operadora_telf'
         verbose_name = 'una operadora'
         verbose_name_plural = 'las operadoras'

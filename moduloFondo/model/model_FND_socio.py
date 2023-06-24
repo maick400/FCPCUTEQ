@@ -21,6 +21,6 @@ class Model_FND_socio(models.Model):
     class Meta: 
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_Socio'
+        db_table = 'fnd_socio'
         verbose_name = 'un Socio'
         verbose_name_plural = 'Socios'

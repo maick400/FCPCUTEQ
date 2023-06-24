@@ -10,32 +10,32 @@ from moduloFondo.model.model_FND_Personal import *
 class Model_Asiento_Contable(models.Model):
 
     id_asiento_contable = models.BigAutoField(primary_key=True)
-    # foraneas
+    # ! foraneas
     plantilla = models.ForeignKey(Model_CNT_Diario_Cuentas_Plantilla,null=True, blank=True, on_delete=models.CASCADE)
     periodo_fiscal = models.ForeignKey( Model_CNT_Periodo_Fiscal,null=False, blank=False, on_delete=models.CASCADE)
-    # documento
+    # ! documento
     documeto = models.ForeignKey(Model_CNT_Documentos, null=False, blank=False, on_delete=models.CASCADE)
     nombre_documento = models.TextField (blank=False, null=False, max_length=200)
     numero_documento = models.TextField()
-    # transaccion
+    # ! transaccion
     transacción = models.ForeignKey(Model_CNT_Tipo_Transaccion_Contable, null=False, blank=False, on_delete=models.CASCADE)
     transaccion_contable = models.TextField(null=False, blank=False, max_length=500)
     numero_transaccion = models.TextField ( null=True, blank=True, max_length=200 )
     
-    # personal que ha creado 
-    personal = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)    
+    # ! personal que ha creado 
+    personal = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE, related_name="personal")    
     nombre_personal = models.TextField(null=False, blank=False, max_length= 200)
     
-    #contador 
-    contador = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    #! contador 
+    contador = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE, related_name='contador')  
     nombre_contador = models.TextField(null=False, blank=False, max_length= 200)
     
-    #Gerente
-    gerente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    #! Gerente
+    gerente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE, related_name='gerente')  
     nombre_gerente = models.TextField(null=False, blank=False, max_length= 200)
     
-    #presidente
-    presidente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE)  
+    #!presidente
+    presidente = models.ForeignKey(Model_FND_Personal,  null= False, blank=False, on_delete=models.CASCADE,related_name='presidente')  
     nombre_presidente = models.TextField(null=False, blank=False, max_length= 200)
     
     

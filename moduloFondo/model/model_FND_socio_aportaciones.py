@@ -14,6 +14,6 @@ class Model_FND_socio_aportaciones(models.Model):
     class Meta:
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_socio_aportaciones'
+        db_table = 'fnd_socio_aportaciones'
         verbose_name = 'una aportación'
         verbose_name_plural = 'Aportaciones'

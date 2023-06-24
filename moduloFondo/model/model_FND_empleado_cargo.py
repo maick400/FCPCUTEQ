@@ -7,6 +7,6 @@ class Model_FND_Empleado_Cargo(models.Model):
     class Meta:
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_Empleado_Cargo'
+        db_table = 'fnd_empleado_cargo'
         verbose_name = 'un Cargo'
         verbose_name_plural = 'Cargos'
