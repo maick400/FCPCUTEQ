@@ -8,5 +8,4 @@ from moduloContable.model.model_CNT_Tipo_Transaccion_Contable import *
 from moduloContable.model.model_CNT_Diario_Cuentas_Plantilla import *
 from moduloContable.model.model_Detalle_plantilla import *
 from moduloContable.model.model_CNT_Detalle_Asiento_Contable import *
-
 from moduloContable.model.model_CNT_Asiento_Contable import *
