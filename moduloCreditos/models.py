@@ -29,7 +29,7 @@ from moduloCreditos.model.model_CRE_credito_garante import *
 
 
 from moduloCreditos.model.model_CRE_credito_pagos import *
-
+from moduloCreditos.model.model_CRE_solicitud_garante import *
 from moduloCreditos.model.model_CRE_tipo_bien_documento import *
 
 
