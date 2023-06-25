@@ -17,7 +17,6 @@ class Model_FND_Parametros_sys(models.Model):
     canton = models.ForeignKey(Model_Fnd_Canton, null=False, blank=False, on_delete=models.CASCADE)
     direccion = models.TextField(max_length=60, null=False, blank=False)
     email = models.TextField(max_length=60, null=False, blank=True)
-    tipo_sistema = 
     
     
     
