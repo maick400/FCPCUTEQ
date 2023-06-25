@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'moduloContable',
     'moduloCreditos',
     'moduloFondo',
-    "moduloSocios"
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

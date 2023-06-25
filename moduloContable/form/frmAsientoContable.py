@@ -1,67 +1,86 @@
 from django import forms
 from moduloContable.model.model_CNT_Asiento_Contable import * 
-from moduloContable.form.choices.asientoContable import *
-from moduloContable.form.choices.estado import *
-
+from moduloContable.form.choices.choices_asientoContable import *
 class frmAsiento_Contable(forms.ModelForm):
     class Meta:
         model=Model_Asiento_Contable
         fields=(
-            #NOMBRE_CUENTA_AC,
-            #DETALLE,
-            #DEBE,
-            #HABER,
-            #PERIODO_FISCAL,
-            #TIPO_DOCUMENTO,
-            "transaccion_contable",
-            "descripcion",
-            "documento",
-            "numero_documento",
-            "nombre_persona1",
-            "nombre_representante",
-            "total_debe",
-            "total_haber",
-            "balance",
-            "bit"
+        'plantilla',
+        'periodo_fiscal',
+        'documeto',
+        'nombre_documento',
+        'numero_documento',
+        'transaccion_contable',
+        'numero_transaccion',
+        'personal',
+        'nombre_personal',
+        'contador',
+        'nombre_contador',
+        'gerente',
+        'nombre_gerente',
+        'presidente',
+        'nombre_presidente',
+        'fecha_cierre',
+        'fecha_mayorización',
+        'detalle',
+        'descripcion',
+        'estado',
+        'total_debe',
+        'total_haber',
         )
+        
 
         labels={
-            #NOMBRE_CUENTA_AC:"Nombre Cuenta",
-            #DETALLE:"Naturaleza",
-            #DEBE:"Movimiento Mayor",
-            #HABER:"Nivel",
-            #PERIODO_FISCAL:"Cuc Reg",
-            #TIPO_DOCUMENTO:"Estado",
-            "transaccion_contable":"Transaccion Contable",
-            "descripcion":"Descripcion",
-            "documento":"Documento",
-            "numero_documento":"Numero Documento",
-            "nombre_persona1":"Nombre Persona",
-            "nombre_representante":"Nombre Representante",
-            "total_debe":"Total Debe",
-            "total_haber":"Total Haber",
-            "balance":"Balance",
-            "bit":"Estado"
+        'plantilla':'Plantilla',
+        'periodo_fiscal':'Periodo Fiscal',
+        'documeto':'Documento',
+        'nombre_documento':'Nombre del documento',
+        'numero_documento': 'N° DOC',
+        'transacción' : 'Transacción contable',
+        'transaccion_contable':'Nombre trasacción',
+        'numero_transaccion':'N° Transacción',
+        'personal':'Personal',
+        'nombre_personal':'Nombre Personal',
+        'contador':'Contador en turno',
+        'nombre_contador':'Nombre Contador',
+        'gerente':'Gerente en turno',
+        'nombre_gerente':'Nombre gerente',
+        'presidente':'Presidente',
+        'nombre_presidente':'Nombre Presidente',
+        'fecha_cierre':'Fecha de cierre',
+        'fecha_mayorización':'Fecha mayorización',
+        'detalle':'destalle',
+        'descripcion':'Descripción',
+        'estado':'Estado',
+        'total_debe':'Total debe',
+        'total_haber':'Total haber',
         }
 
 
         widgets = {
-            #NOMBRE_CUENTA_AC:forms.Select(choices=NOMBRE_CUENTA_SELECT),
-            #DETALLE:forms.TextInput(),
-            #DEBE:forms.TextInput(),
-            #HABER:forms.TextInput(),
-            #PERIODO_FISCAL:forms.Select(choices=NOMBRE_CUENTA_SELECT),
-            #TIPO_DOCUMENTO:forms.Select(choices=TIPO_DOCUMENTO_SELECT),
-            "transaccion_contable":forms.Select(choices=TRANSACCION_CONTABLE_SELECT),
-            "descripcion":forms.TextInput(),
-            "documento":forms.FileInput(),
-            "numero_documento":forms.TextInput(),
-            "nombre_persona1":forms.TextInput(),
-            "nombre_representante":forms.TextInput(),
-            "total_debe":forms.TextInput(),
-            "total_haber":forms.TextInput(),
-            "balance":forms.TextInput(),
-            "bit":forms.Select(choices=BOLEANS),
+        'plantilla':forms.Select(),
+        'periodo_fiscal':forms.Select(),
+        'documeto':forms.Select(),
+        'nombre_documento':forms.TextInput(),
+        'numero_documento': forms.Textarea(),
+        'transaccion' : forms.Select(),
+        'transaccion_contable' : forms.TextInput(),
+        'numero_transaccion':forms.TextInput(),
+        'personal': forms.Select(),
+        'nombre_personal': forms.TextInput(),
+        'contador': forms.Select(),
+        'nombre_contador':forms.TextInput() ,
+        'gerente': forms.Select(),
+        'nombre_gerente': forms.TextInput(),
+        'presidente': forms.Select(),
+        'nombre_presidente': forms.TextInput(),
+        'fecha_cierre':forms.DateTimeInput(),
+        'fecha_mayorización':forms.DateTimeInput(),
+        'detalle': forms.TextInput(),
+        'descripcion':forms.Textarea(),
+        'estado':forms.Select(choices=ESTADO),
+        'total_debe':forms.NumberInput(),
+        'total_haber':forms.NumberInput(),
         }
 
 
@@ -70,7 +89,5 @@ class frmAsiento_Contable(forms.ModelForm):
         }
 
         error_messages = {
-            "nombre_cuenta":{
-                'unique':''
-            }
+
         }

@@ -14,6 +14,6 @@ class Model_FND_contacto_socio(models.Model):
     class Meta:
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_contacto_socio'
+        db_table = 'fnd_contacto_socio'
         verbose_name = 'un Contacto Socio'
         verbose_name_plural = 'Contactos Socios'

@@ -1,27 +1,31 @@
 from django import forms
 from moduloContable.model.model_CNT_Anio_Fiscal import * 
-from moduloContable.form.choices.anioFiscal import *
+from moduloContable.form.choices.choices_anio_fiscal import *
 
-class frm_Anio_Fiscal(forms.ModelForm):
+class Frm_Anio_Fiscal(forms.ModelForm):
     class Meta:
         model=Model_CNT_Anio_Fiscal
         fields=(
-            "inicio",
-            "fin",
-            "activo",
+            'anio',
+            'inicio',
+            'fin',
+            'estado',
         )
 
         labels={
-            "inicio":"Inicio",
-            "fin":"Fin",
-            "activo":"Estado",
+            'anio':'Año Fiscal',
+            'inicio':"Fecha Inicio",
+            'fin':"Fecha Fin",
+            'estado':"Estado",
         }
 
 
         widgets = {
-            "inicio":forms.DateInput(attrs={"type":"date"}),
-            "fin":forms.DateInput(attrs={"type":"date"}),
-            "activo":forms.Select(choices=ESTADOC)
+            
+            'anio':forms.NumberInput(attrs={"type":"date"}),
+            'inicio':forms.DateInput(attrs={"type":"date"}),
+            'fin':forms.DateInput(attrs={"type":"date"}),
+            'estado':forms.Select(choices=ESTADO),
         }
 
 

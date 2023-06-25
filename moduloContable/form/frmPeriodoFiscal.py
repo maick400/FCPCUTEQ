@@ -1,30 +1,36 @@
 from django import forms
 from moduloContable.model.model_CNT_Periodo_Fiscal import * 
-from moduloContable.form.choices.PeriodoFiscal import *
+from moduloContable.form.choices.choices_periodo_fiscal import *
 
-class frmPeriodo_Fiscal(forms.ModelForm):
+class Frm_Periodo_Fiscal(forms.ModelForm):
     class Meta:
         model=Model_CNT_Periodo_Fiscal
         fields=(
-            "nombre",
-            "inicio",
-            "fin",
-            "estado"
+            'anio_fiscal',
+            'numero',
+            'nombre',
+            'inicio',
+            'fin',
+            'estado',
         )
 
         labels={
-            "nombre":"Nombre",
-            "inicio":"Inicio",
-            "fin":"Fin",
-            "estado":"estado",
+            'anio_fiscal':'Año fiscal',
+            'numero':'Número',
+            'nombre':'Nombre',
+            'inicio':'Fecha inicio',
+            'fin':'Fecha fin',
+            'estado':'Estado',
         }
 
 
         widgets = {
-            "nombre":forms.TextInput(),
-            "inicio":forms.DateInput(attrs={"type":"date"}),
-            "fin":forms.DateInput(attrs={"type":"date"}),
-            "estado":forms.Select(choices=ESTADOC)
+            'anio_fiscal':forms.Select(),
+            'numero':forms.NumberInput(),
+            'nombre':forms.TextInput(),
+            'inicio':forms.DateInput(attrs={"type":"date"}),
+            'fin':forms.DateInput(attrs={"type":"date"}),
+            'estado':forms.Select(choices=ESTADO),
         }
 
 
@@ -33,7 +39,4 @@ class frmPeriodo_Fiscal(forms.ModelForm):
         }
 
         error_messages = {
-            "nombre":{
-                'unique':'Periodo ya existente'
-            }
         }

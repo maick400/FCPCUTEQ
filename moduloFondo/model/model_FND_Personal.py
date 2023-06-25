@@ -19,6 +19,6 @@ class Model_FND_Personal(models.Model):
     class Meta: 
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_Personal'
+        db_table = 'fnd_personal'
         verbose_name = 'un Empleado'
         verbose_name_plural = 'Empleados'

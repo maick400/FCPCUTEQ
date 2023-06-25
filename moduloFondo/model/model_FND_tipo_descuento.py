@@ -5,12 +5,9 @@ class Model_FND_tipo_descuento(models.Model):
     tipo_descuento = models.CharField(max_length=100,  blank=False, null=False)
     descuento = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
 
-
-
-
     class Meta:
         app_label = "moduloFondo"
         managed = True
-        db_table = 'FND_tipo_descuento'
+        db_table = 'fnd_tipo_descuento'
         verbose_name = 'un tipo de descuento'
         verbose_name_plural = 'Tipos de descuentos'
