@@ -6,6 +6,8 @@ class Model_CRE_solicitud_documentos_bien (models.Model):
     id_solicitud_bien = models.ForeignKey(Model_CRE_solicitud_bien, default = "", on_delete=models.CASCADE, blank=False, null=False)
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     ruta_documento = models.CharField(max_length=999999, null=False, blank=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     def __str__(self) -> str:
         return (self.id_solicitud_bien)

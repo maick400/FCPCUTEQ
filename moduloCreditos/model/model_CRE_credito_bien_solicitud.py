@@ -6,6 +6,8 @@ class Model_CRE_credito_bien_solicitud (models.Model):
     id_credito_bien = models.ForeignKey(Model_CRE_credito_bien, on_delete=models.CASCADE, blank=False, null=False)
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     ruta_documento = models.CharField(max_length=1000, null=False, blank=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     class Meta:
         app_label = "moduloCreditos"

@@ -6,6 +6,8 @@ class Model_CRE_solicitud_credito_documentos (models.Model):
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     ruta_documento = models.CharField(max_length=99999, null=False, blank=False)
     estado = models.CharField(max_length=1, null=False, blank=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
    
     class Meta:
         app_label = "moduloCreditos"

@@ -20,6 +20,8 @@ urlpatterns = [
     path( 'solicitud_credito/crear/', crear_solicitud_credito, name='crear_solicitud_credito'),
     path( 'solicitud_bien/crear/', crear_solicitud_bienes, name='crear_solicitud_bienes'),
     path( 'solicitud_documentos_bien/crear/', crear_solicitud_documento_bien, name='crear_solicitud_documento_bien'),
-    path( 'credito_amortizacion/crear/', crear_tabla_amortizacion, name='crear_tabla_amortizacion')
-            
+    path( 'credito_amortizacion/crear/', crear_tabla_amortizacion, name='crear_tabla_amortizacion'),
+    path( 'credito_pagos/crear/', crear_pago_credito, name='crear_pago_credito'),
+    path( 'credito_bien/crear/', crear_credito_bien, name='crear_credito_bien'),
+    path( 'credito_garante/crear/', crer_credito_garante, name='crer_credito_garante')
 ]

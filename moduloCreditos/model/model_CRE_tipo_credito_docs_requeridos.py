@@ -6,6 +6,8 @@ class Model_CRE_tipo_credito_docs_requeridos (models.Model):
     id_tipo_credito = models.ForeignKey(Model_CRE_tipo_credito, on_delete=models.CASCADE, blank=False, null=False)
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     es_requerido = models.BooleanField(null=False, blank=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     class Meta:
         app_label = "moduloCreditos"
