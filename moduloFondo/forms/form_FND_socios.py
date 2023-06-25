@@ -1,6 +1,5 @@
 from django import  forms
 from moduloFondo.model.model_FND_socio import Model_FND_socio
-from moduloFondo.forms.choices.choices_FND_socios import *
 
 #FORMULARIO DE TIPO DE DESCUENTO
 class frm_socio(forms.ModelForm):
@@ -23,6 +22,7 @@ class frm_socio(forms.ModelForm):
             'pPresta',
         )
         
+        
         labels= {
             'genero': 'Género',
             'estado_civil': 'Estado Civil',
@@ -41,13 +41,13 @@ class frm_socio(forms.ModelForm):
         }
 
         widgets = {
-            'genero' : forms.Select(choices=GENEROS_CHOICES),
-            'estado_civil' : forms.Select(choices=ESTADOS_CIVILES_CHOICES),
+            'genero' : forms.Select(),
+            'estado_civil' : forms.Select(),
             'direccion' : forms.TextInput(),
             'email' : forms.EmailInput(),
             'fecha_nacimiento' : forms.DateInput(attrs={'type': 'date'}),
-            'tipo_prestacion' : forms.Select(choices=TIPO_PRESTACION_CHOICES),
-            'estado' : forms.Select(choices=ESTADO_CHOICES),
+            'tipo_prestacion' : forms.Select(),
+            'estado' : forms.Select(),
             'contacto_referencia' : forms.TextInput(),
             'total_ahorrado' : forms.NumberInput(),
             'total_garantizado' : forms.NumberInput(),
