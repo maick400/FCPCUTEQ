@@ -31,3 +31,11 @@ from moduloCreditos.model.model_CRE_credito_garante import *
 from moduloCreditos.model.model_CRE_credito_pagos import *
 
 from moduloCreditos.model.model_CRE_tipo_bien_documento import *
+
+
+#PRUEBA
+
+from moduloCreditos.model.model_TEST_tabla import *
+from moduloCreditos.model.model_TEST_campos import *
+from moduloCreditos.model.model_TEST_validaciones import *
+from moduloCreditos.model.model_TEST_valores import *

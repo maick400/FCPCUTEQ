@@ -10,6 +10,8 @@ class Model_CRE_credito_otorgado (models.Model):
     plazo_meses = models.IntegerField(null=False)
     tasa_interes = models.DecimalField(max_digits=3, decimal_places=2, null=False)
     numero_cuotas = models.IntegerField(null=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     class Meta:
         app_label = "moduloCreditos"

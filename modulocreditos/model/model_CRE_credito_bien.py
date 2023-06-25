@@ -8,6 +8,8 @@ class Model_CRE_credito_bien(models.Model):
     bien = models.CharField(max_length=200, blank=False, null=False)
     avaluo = models.DecimalField(max_digits=12, decimal_places=2, blank=False, null = False)
     atributos = models.CharField(max_length=99999, blank=True, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_modificacion = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         app_label = "moduloCreditos"

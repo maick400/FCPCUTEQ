@@ -7,6 +7,8 @@ class Model_CRE_tipo_bien_tipo_credito (models.Model):
     id_tipo_credito = models.ForeignKey(Model_CRE_tipo_credito, on_delete=models.CASCADE, blank=False, null=False)
     id_tipo_bien =  models.ForeignKey(Model_CRE_tipo_bien, on_delete=models.CASCADE, blank=False, null=False)
     estado = models.BooleanField(null = False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     class Meta:
         app_label = "moduloCreditos"

@@ -9,6 +9,8 @@ class Model_CRE_solicitud_bien (models.Model):
     bien = models.CharField(max_length=200, blank=False, null=False)
     estado = models.CharField(max_length=1, blank=False, null=False)
     atributo = models.CharField(max_length=99999, blank=False, null=False)
+    fecha_creacion = models.DateTimeField(null=False)
+    fecha_modificacion = models.DateTimeField(null = False)
 
     def __str__(self) -> str:
         return (self.id_solicitud_bien)
