@@ -1,13 +1,33 @@
 from django.db import models
+from moduloFondo.model.model_FND_socio import Model_FND_socio as SOCIO
+from moduloFondo.model.model_FND_tipo_identificación import * 
+from moduloFondo.model.model_FND_provincia import * 
+from moduloFondo.model.model_FND_canton import * 
+
+
+
 
 class Model_FND_Parametros_sys(models.Model):
+    
+    tipo_de_idemtificacion_fcpc = models.ForeignKey(Model_Fnd_Tipo_Identificacion, null=False, blank=False, on_delete=models.CASCADE)
+    identificacion = models.TextField(max_length=13, null= False, blank=False )
+    n_resolucion = models.TextField(max_length=15, null= False, blank=False )
+    fecha_resolucion = models.DateField(null=False, blank=False)
+    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE)
+    canton = models.ForeignKey(Model_Fnd_Canton, null=False, blank=False, on_delete=models.CASCADE)
+    direccion = models.TextField(max_length=60, null=False, blank=False)
+    email = models.TextField(max_length=60, null=False, blank=True)
+    tipo_sistema = 
+    
+    
+    
+    
+    
     nombre_fondo = models.CharField(max_length=300,null=False, blank=False)
-    nombre_contador = models.CharField(max_length=100,null=False, blank=False)
+    contador = models.ForeignKey(SOCIO,null=False, blank=False, on_delete=models.CASCADE, related_name='contador')
     matricula_contador = models.CharField(max_length=100,null=False, blank=False)
-    cedula_rep_legal = models.CharField(max_length=10,null=False, blank=False)
-    nombre_rep_legal = models.CharField(max_length=100,null=False, blank=False)
-    ced_representante_Creditos = models.CharField(max_length=200,null=False, blank=False)
-    nombre_rep_credito = models.CharField(max_length=200,null=False, blank=False)
+    representante_legal = models.ForeignKey(SOCIO,null=False, blank=False, on_delete=models.CASCADE, related_name='representante_legal')
+    responsable_creditos = models.ForeignKey(SOCIO,null=False, blank=False, on_delete=models.CASCADE, related_name='responsable_creditos')
     fecha_const_fondo = models.DateField(null=False, blank=False)
     correo = models.EmailField(max_length=100,null=False, blank=False)
     smtp_server = models.CharField(max_length=100,null=False, blank=False)
