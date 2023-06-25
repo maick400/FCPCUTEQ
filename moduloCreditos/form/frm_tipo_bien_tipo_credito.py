@@ -9,20 +9,20 @@ class frm_tipo_bien_tipo_credito(forms.ModelForm):
         fields= (           
            ID_TIPO_CREDITO,
            ID_TIPO_BIEN,
-           ESTADO
+           'es_aceptado'
         )
 
         labels={
             ID_TIPO_CREDITO: "Credito",
             ID_TIPO_BIEN: "Bien",
-            ESTADO: "Estado"            
+            'es_aceptado': "Aceptado"            
         }
 
 
         widgets = {
             ID_TIPO_CREDITO: forms.Select(),
             ID_TIPO_BIEN: forms.Select(),
-            ESTADO: forms.CheckboxInput()
+            'es_aceptado': forms.CheckboxInput()
         }
 
         help_texts = {

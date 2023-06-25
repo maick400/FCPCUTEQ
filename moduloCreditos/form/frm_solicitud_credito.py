@@ -8,7 +8,6 @@ class frm_solicitud_credito(forms.ModelForm):
         fields= (           
             #'id_fondo_socio',
             'id_tipo_credito',
-            'id_tipo_bien',
             #'id_personal_recibido',
             #'id_personal_validado',
             'monto',
@@ -19,7 +18,6 @@ class frm_solicitud_credito(forms.ModelForm):
         labels={
             #'id_fondo_socio': 'Socio',
             'id_tipo_credito': 'Tipo de crédito',
-            'id_tipo_bien': 'Tipo de bien',
             #'id_personal_recibido': 'Receptor',
             #'id_personal_validado': 'Validador',
             'monto': 'Monto',
@@ -31,7 +29,6 @@ class frm_solicitud_credito(forms.ModelForm):
         widgets = {
             #'id_fondo_socio': forms.Select(),
             'id_tipo_credito': forms.Select(),
-            'id_tipo_bien': forms.Select(),
             #'id_personal_recibido': forms.Select(),
             #'id_personal_validado': forms.Select(),
             'monto': forms.NumberInput(),
