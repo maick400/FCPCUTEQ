@@ -8,6 +8,7 @@ class Model_CRE_tipo_credito (models.Model):
     max_credito_anios = models.IntegerField(null=False)
     prioridad_calif_cartera = models.IntegerField(null=False)
     tipo_garan_calif_cartera = models.CharField(max_length=2, null=False)
+    observacion = models.TextField(null=False)
     permite_garante = models.BooleanField(null=False)
     gerencia_requerida = models.BooleanField(null=False)
     genera_amortizacion = models.BooleanField(null=False)
