@@ -14,7 +14,7 @@ from moduloCreditos.form.frm_solicitud_bienes import *
 from moduloCreditos.form.frm_solicitud_documentos_bien import *
 from moduloCreditos.form.frm_credito_amortizacion import *
 
-
+from django.core.paginator import Paginator
 
 # Create your views here.
 
