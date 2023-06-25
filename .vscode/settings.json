@@ -9,5 +9,9 @@
             "database": "FCPCUTEQ",
             "username": "postgres"
         }
-    ]
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
 }

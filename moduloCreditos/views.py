@@ -13,7 +13,7 @@ from moduloCreditos.form.frm_solicitud_bienes import *
 from moduloCreditos.form.frm_solicitud_documentos_bien import *
 from moduloCreditos.form.frm_credito_amortizacion import *
 
-
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -24,6 +24,16 @@ def crear_tipo_bien (request):
     if request.method == 'GET':
         return render(request, 'creditos/tipo_bien/crear.html', {'title':pag_titulo,'frm':form_tipo_bien})
     
+
+def listar_tipo_bien (request):
+    pag_titulo = "Tipo de bienes"
+    form_tipo_bien = Model_CRE_tipo_bien.objects.all()
+    paginator = Paginator(form_tipo_bien, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'creditos/tipo_bien/listar.html', {'title':pag_titulo,'frm':page_obj})
+
 
 def crear_tipo_bien_atributo (request):
     pag_titulo = "Atributos de bien"
