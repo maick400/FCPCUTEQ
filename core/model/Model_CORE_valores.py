@@ -7,6 +7,7 @@ class Model_CORE_valores (models.Model):
     id_campo = models.ForeignKey(Model_CORE_campos, on_delete=models.CASCADE, null=False)
     valor = models.TextField(null = False)
     activo = models.BooleanField(null = False)
+    linea = models.BigIntegerField(null=False)
 
     class Meta:
         app_label = "core"
