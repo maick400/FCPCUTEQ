@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            {% for col in tabla.columnas %}
+
+            <th scope="col">{{col.nombre_campo}}</th>
+            {% endfor %}
+            <th scope="col">Acciones</th>
+
+           
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for fila in tabla.filas_tabla  %}
+
+            <tr>    
+                     <div>
+                         <td> 
+                            <input type="text" value="{{fila.0}}" class="form-control">
+                         </td>
+                             
+                        <td>
+                            <input type="text" value="{{fila.2}}" class="form-control">
+                        </td>
+
+                        <td>
+                            <input type="text" value="{{fila.4}}" class="form-control">
+                        </td>
+
+         
+                         <td>
+                                 <button class="btn btn-primary btn-sm" type="submit">
+                                    Guardar
+                                 </button>
+                         </td> 
+
+                     </div>   
+                
+                    
+            </tr>
+
+            {% endfor %}
+
+        
+    </tbody>
+
+    
+</table>
+
+
+{% endblock content %}
