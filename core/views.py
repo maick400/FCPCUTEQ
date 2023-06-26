@@ -3,9 +3,21 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from core.tools.get_field import Core_Tabla
 # Create your views here.
 def iniciar_sesion(request):
     page_title = 'Iniciar sesión'
+    
+
+
+
+    # print(tabla_provincias.datos)
+    
+
+
+    
+    # print(tabla_provincias.print_consulta())
+
     
     if request.method == 'POST':
         # Vemos si el usuario existe 
@@ -34,3 +46,9 @@ def cerrar_sesion(request):
 def inicio(request):
     page_title = 'Inicio'
     return render(request,"core/home.html",{'title':page_title})
+
+def get_table(request):
+    tabla = Core_Tabla('Tipo de fondo complementario (FCPC)')
+    print(tabla.filas_tabla)
+    return render(request, 'core/tablas_parametros/get_tabla.html', {'tabla':tabla})
+

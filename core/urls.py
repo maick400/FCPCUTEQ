@@ -6,5 +6,7 @@ urlpatterns = [
     path('', inicio, name='home'),
     path('signin/', iniciar_sesion, name="signin"),
     path('logout/',cerrar_sesion, name="logout"),
+    path('tabla/',get_table, name="tabla"),
+
 
 ]
