@@ -14,8 +14,7 @@ class Model_FND_Parametros_sys(models.Model):
     identificacion = models.TextField(max_length=13, null= False, blank=False )
     n_resolucion = models.TextField(max_length=15, null= False, blank=False )
     fecha_resolucion = models.DateField(null=False, blank=False)
-    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE, choices= get_choices("select  * from view_core_get_tabla where nombre_tabla  = 'Código de provincia '"))
-
+    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE, choices= get_choices("select  * from view_core_get_tabla vcgt where id_tabla  = 8 order by id_valor"))
     canton = models.ForeignKey(Model_Fnd_Canton, null=False, blank=False, on_delete=models.CASCADE)
     direccion = models.TextField(max_length=60, null=False, blank=False)
     email = models.TextField(max_length=60, null=False, blank=True)
