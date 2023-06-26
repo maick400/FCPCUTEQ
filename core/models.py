@@ -1,6 +1,8 @@
+from django.db import models
 
-from core.models.Model_CORE_solicitudes_generales import Model_CORE_solicitudes_generales
 
-from core.models.Model_CORE_tabla import Model_CORE_tabla
-from core.models.Model_CORE_campos import Model_CORE_campos
-from core.models.Model_CORE_valores import Model_CORE_valores
+from core.model.Model_CORE_solicitudes_generales import *
+
+from core.model.Model_CORE_tabla import *
+from core.model.Model_CORE_campos import *
+from core.model.Model_CORE_valores import *

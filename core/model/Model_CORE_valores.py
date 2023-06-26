@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models.Model_CORE_campos import Model_CORE_campos
+from core.model.Model_CORE_campos import Model_CORE_campos
 
 class Model_CORE_valores (models.Model):
     id_valor = models.BigAutoField(primary_key = True)
