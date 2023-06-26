@@ -7,6 +7,8 @@ from moduloFondo.forms.form_FND_parametros_sys  import *
 from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
 
+
+
 from django.core.paginator import Paginator
 
 
@@ -125,18 +127,17 @@ def editar_socio(request, pk):
 @permission_required('moduloFondo.view_model_fnd_parametros_sys')
 def ver_parametros(request):
     pag_titulo = 'Parametros del sistema'
-    all_parametros = Model_FND_Parametros_sys.objects.all()
-    formulario = frm_parametros_sys()
-    return render(request, 'fondo/parametros/parametros_ver.html', {'title': pag_titulo, 'all_parametros': formulario})
+    formulario = Frm_Fnd_Parametros_Sys
+    return render(request, 'fondo/parametros/parametros_ver.html', {'title': pag_titulo, 'frm': formulario})
 
 #EDITAR PARAMETROS DEL SISTEMA
 @permission_required('moduloFondo.change_model_fnd_parametros_sys')
 def editar_parametros(request, pk):
     parametro = get_object_or_404(Model_FND_Parametros_sys, pk=pk)
-    form = frm_parametros_sys(instance=parametro)
+    form = Frm_Fnd_Parametros_Sys(instance=parametro)
     pag_titulo = 'Editar parametros del sistema'
     if request.method == 'POST':
-        form = frm_parametros_sys(request.POST, instance=parametro)
+        form = Frm_Fnd_Parametros_Sys(request.POST, instance=parametro)
         if form.is_valid():
             form.save()
             # Redirecciona a alguna página de éxito o muestra un mensaje de éxito

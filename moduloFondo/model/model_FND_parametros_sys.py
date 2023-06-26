@@ -3,6 +3,7 @@ from moduloFondo.model.model_FND_socio import Model_FND_socio as SOCIO
 from moduloFondo.model.model_FND_tipo_identificación import * 
 from moduloFondo.model.model_FND_provincia import * 
 from moduloFondo.model.model_FND_canton import * 
+from core.tools.get_field import Core_Tabla
 
 
 
@@ -13,7 +14,7 @@ class Model_FND_Parametros_sys(models.Model):
     identificacion = models.TextField(max_length=13, null= False, blank=False )
     n_resolucion = models.TextField(max_length=15, null= False, blank=False )
     fecha_resolucion = models.DateField(null=False, blank=False)
-    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE)
+    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE, choices= Core_Tabla('Tipo de fondo complementario (FCPC)').choices )
     canton = models.ForeignKey(Model_Fnd_Canton, null=False, blank=False, on_delete=models.CASCADE)
     direccion = models.TextField(max_length=60, null=False, blank=False)
     email = models.TextField(max_length=60, null=False, blank=True)
