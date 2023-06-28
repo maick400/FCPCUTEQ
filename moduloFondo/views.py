@@ -32,9 +32,8 @@ def crear_tipo_descuento(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, 'fondo/tipo_descuento/tipo_descuento_crear.html', {'title':pag_titulo,'frm':frm_crear})
-        
 
-        
+       
 # LISTA DE TIPO DE DESCUENTO
 #Se debe cambiar el permiso para que sea el de listar los tipos de descuentos
 @permission_required('moduloFondo.view_model_fnd_tipo_descuento')

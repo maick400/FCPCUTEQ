@@ -48,7 +48,22 @@ def inicio(request):
     return render(request,"core/home.html",{'title':page_title})
 
 def get_table(request):
-    tabla = Core_Tabla('Tipo de fondo complementario (FCPC)')
-    print(tabla.filas_tabla)
+    tabla = Core_Tabla(183)
+    print(tabla.datos)
     return render(request, 'core/tablas_parametros/get_tabla.html', {'tabla':tabla})
+
+def modulo_contable (request):
+    page_title = 'Módulo contable'
+    return render(request, 'core/modulos/contable/modulo_contable.html' , {'title':page_title})
+
+def modulo_fondo (request):
+    page_title = 'Módulo contable'
+    return render(request, 'core/modulos/fondo/modulo_fondo.html' , {'title':page_title})
+
+def modulo_sistema (request):
+    # tablas_guia =  
+    page_title = 'Módulo contable'
+    return render(request, 'core/modulos/sistema/modulo_sistema.html' , {'title':page_title})
+
+
 

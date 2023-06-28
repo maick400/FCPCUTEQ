@@ -8,12 +8,10 @@ class frm_tipo_descuento(forms.ModelForm):
         model = Model_FND_tipo_descuento
         fields = (
             'tipo_descuento',
-            'descuento',
         )
         
         labels= {
             'tipo_descuento': 'Tipo de descuento',
-            'descuento' : 'Descuento',
         }
 
         widgets = {
@@ -23,7 +21,6 @@ class frm_tipo_descuento(forms.ModelForm):
         
         help_texts = {
             'tipo_descuento':'Ejemplo: 1411000001',
-            'descuento':'Ejemplo: '}
-        
+        }
 
 
