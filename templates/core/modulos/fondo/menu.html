@@ -7,24 +7,26 @@
 
       <span class="logo_name btn-menu m-0">FCPC-UTEQ</span>
     </div>
+
     <ul class="nav-links ">
-      
       <li>
         <div class="iocn-link bg-success">
           <a href="#">
-            <i > <box-icon name='bank' type='solid' ></box-icon> </i>
-            <span class="link_name mb-1">Módulo Fondo </span>
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Módulo Contable </span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
-
         <ul class="sub-menu bg-success">
-          <li><a class="link_name" href="#">Modulo Fondo</a></li>
-          <li><a href="#">Fondo</a></li>
-          <li><a href="#">Contable</a></li>
-          <li><a href="#">Sistema</a></li>
+          <li><a class="link_name" href="#">Módulo Contable</a></li>
+          <li><a href="{% url 'core:mod_contable' %}">Modulo de Contable</a></li>
+          <li><a href="{% url 'core:mod_admin' %}">Modulo de Sistema</a></li>
+
         </ul>
       </li>
+
+
+    
     <ul class="nav-links">
       <li>
         <a href="#">
@@ -68,7 +70,6 @@
           <li><a href="#">Descuento a partícipes</a></li>
           <li><a href=" {% url 'creditos:crear_tipo_credito' %} ">Crear tipo de credito</a></li>
           <li><a href="#">Solicitud de credito</a></li>
-          <li><a href="#">Créditos</a></li>
           <li><a href="#">Reportes</a></li>
 
         </ul>
@@ -78,72 +79,56 @@
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">  Socios</span>
+            <span class="link_name">Reportes</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Socios</a></li>
-          <li><a href="#">Agregar socio</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-
+          <li><a class="link_name" href="#">Reportes</a></li>
+          <li><a href="#">Deuda de partícipes</a></li>
         </ul>
       </li>
+
 
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">  Contable</span>
+            <span class="link_name">Personal</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Contable</a></li>
-          <li><a href=" {% url 'moduloContable:cuentas_contable_inicio' %} ">Catálogo de cuentas</a></li>
-          <li><a href=" {% url 'moduloContable:cuentas_contable_crear' %} ">Agregar Cuentas</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-
+          <li><a class="link_name" href="#">Personal</a></li>
+          <li><a href="#">Ver personal</a></li>
         </ul>
       </li>
-
-
-
 
 
       <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Reportes</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Reportes</a></li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Parámetros</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Parámetros</a></li>
+          <li><a hx-post="/clicked" hx-trigger="click" hx-target="#parent-div"   >Tipo de descuentos</a></li>
+          <li><a href="#">Tipo de Identificaciones</a></li>
         </ul>
       </li>
+
+
+
+
      
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="link_name">Configuración</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
-        </ul>
-      </li>
-      <li>
-
    
-
-
-
-
-  
 
     
   </li>
+  
   <div id="cont">
     <div id="contOne" class="align-bottom">
       <div class="container">
