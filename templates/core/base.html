@@ -10,7 +10,12 @@
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    {% include 'core/aside-menu.html' %}
+
+
+    {% block menu %}
+      
+    {% endblock menu %}
+    
     
     <section class="home-section overflow-auto">
 
@@ -21,17 +26,16 @@
             </div>
           </div>-->
       
-        <!--
+        <!--yy
         <div class="home-content sticky-top">
             <span class="text">{{title}}</span>
         </div>-->
         <div class=" d-flex justify-content-center container-fluid pt-2 p-5">
             {% block content%}
-sdsdsdsd
             {% endblock content%}
-
-            
+  
         </div>
+
         <script src="{% static  'js/aside-menu.js' %}"></script>
 
 

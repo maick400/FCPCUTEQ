@@ -1,30 +1,32 @@
 {% load static %}
 
-<div class="sidebar bg-dark" style="background-color: #1B7505;">
+<div class="sidebar " style="background-color: #1B7505;">
     <div class="logo-details">
       <!-- <i class='bx bxl-c-plus-plus'></i> -->
       <i><box-icon class="btn-menu" color="white" size="lg" type='solid' name='bank'></box-icon></i> 
 
       <span class="logo_name btn-menu m-0">FCPC-UTEQ</span>
     </div>
+
     <ul class="nav-links ">
-      
-      <li>
+      <li class="color-dark">
         <div class="iocn-link bg-success">
           <a href="#">
-            <i > <box-icon name='bank' type='solid' ></box-icon> </i>
-            <span class="link_name mb-1">Módulo Fondo </span>
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Módulo Sistema </span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
-
         <ul class="sub-menu bg-success">
-          <li><a class="link_name" href="#">Modulo Fondo</a></li>
-          <li><a href="#">Fondo</a></li>
-          <li><a href="#">Contable</a></li>
-          <li><a href="#">Sistema</a></li>
+          <li><a class="link_name" href="#">Módulo Sistema</a></li>
+          <li><a href="{% url 'core:mod_contable' %}">Modulo de Contable</a></li>
+          <li><a href="{% url 'core:mod_fondo' %}">Modulo fondo</a></li>
+
         </ul>
       </li>
+
+
+    
     <ul class="nav-links">
       <li>
         <a href="#">
@@ -41,16 +43,16 @@
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Créditos</span>
+            <span class="link_name">Sistema</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Creditos</a></li>
-          <li><a href="#">Pagos</a></li>
+          <li><a class="link_name" href="#">Sistema</a></li>
+          {% comment %} <li><a href="#">Pagos</a></li>
           <li><a href="#">Solicitud de credito</a></li>
           <li><a href="#">Créditos</a></li>
-          <li><a href="#">Reportes</a></li>
+          <li><a href="#">Reportes</a></li> {% endcomment %}
 
         </ul>
       </li>
@@ -59,18 +61,14 @@
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Aportes</span>
+            <span class="link_name">Tablas SB</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Aportes</a></li>
+          <li><a class="link_name" href="#">Tablas SB</a></li>
           <li><a href="#">Descuento a partícipes</a></li>
-          <li><a href=" {% url 'creditos:crear_tipo_credito' %} ">Crear tipo de credito</a></li>
           <li><a href="#">Solicitud de credito</a></li>
-          <li><a href="#">Créditos</a></li>
-          <li><a href="#">Reportes</a></li>
-
         </ul>
       </li>
 
@@ -78,72 +76,32 @@
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">  Socios</span>
+            <span class="link_name">Tipos Créditos</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Socios</a></li>
-          <li><a href="#">Agregar socio</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-
+          <li><a class="link_name" href="#">Tipos_creditos</a></li>
         </ul>
       </li>
+
+
 
       <li>
         <div class="iocn-link">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">  Contable</span>
+            <span class="link_name">Reportes</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Contable</a></li>
-          <li><a href=" {% url 'moduloContable:cuentas_contable_inicio' %} ">Catálogo de cuentas</a></li>
-          <li><a href=" {% url 'moduloContable:cuentas_contable_crear' %} ">Agregar Cuentas</a></li>
-          <li><a href="#">##</a></li>
-          <li><a href="#">##</a></li>
-
-        </ul>
-      </li>
-
-
-
-
-
-      <li>
-        <a href="#">
-          <i class='bx bx-line-chart' ></i>
-          <span class="link_name">Reportes</span>
-        </a>
-        <ul class="sub-menu blank">
           <li><a class="link_name" href="#">Reportes</a></li>
         </ul>
       </li>
-     
-      <li>
-        <a href="#">
-          <i class='bx bx-cog' ></i>
-          <span class="link_name">Configuración</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Setting</a></li>
-        </ul>
-      </li>
-      <li>
-
-   
-
-
-
-
-  
-
-    
+ 
   </li>
+  
   <div id="cont">
     <div id="contOne" class="align-bottom">
       <div class="container">
@@ -152,7 +110,8 @@
         <p id="equipo"></p>
       </div>
     </div>
-</div>
+  </div>
+
 </ul>
   </div>
 
