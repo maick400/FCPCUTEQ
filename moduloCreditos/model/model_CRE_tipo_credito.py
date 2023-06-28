@@ -11,9 +11,9 @@ class Model_CRE_tipo_credito (models.Model):
     permite_garante = models.BooleanField(null=False)
     gerencia_requerida = models.BooleanField(null=False)
     genera_amortizacion = models.BooleanField(null=False)
-    activo = models.BooleanField(null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    activo = models.BooleanField(null=True)
+    fecha_creacion = models.DateField(null=True)
+    fecha_modificacion = models.DateField(null = True)
 
     class Meta:
         app_label = "moduloCreditos"

@@ -9,20 +9,14 @@ from moduloFondo.model.model_FND_canton import *
 
 class Model_FND_Parametros_sys(models.Model):
     
-    tipo_de_idemtificacion_fcpc = models.ForeignKey(Model_Fnd_Tipo_Identificacion, null=False, blank=False, on_delete=models.CASCADE)
-    identificacion = models.TextField(max_length=13, null= False, blank=False )
-    n_resolucion = models.TextField(max_length=15, null= False, blank=False )
-    fecha_resolucion = models.DateField(null=False, blank=False)
-    provincia = models.ForeignKey (Model_Fnd_Provincia, null=False, blank=False, on_delete=models.CASCADE)
-    canton = models.ForeignKey(Model_Fnd_Canton, null=False, blank=False, on_delete=models.CASCADE)
-    direccion = models.TextField(max_length=60, null=False, blank=False)
-    email = models.TextField(max_length=60, null=False, blank=True)
-    tipo_sistema = 
-    
-    
-    
-    
-    
+    tipo_de_idemtificacion_fcpc = models.ForeignKey(Model_Fnd_Tipo_Identificacion, null=True, blank=True, on_delete=models.CASCADE)
+    identificacion = models.TextField(max_length=13, null= True, blank=True )
+    n_resolucion = models.TextField(max_length=15, null= True, blank=True )
+    fecha_resolucion = models.DateField(null=True, blank=True)
+    provincia = models.ForeignKey (Model_Fnd_Provincia, null=True, blank=True, on_delete=models.CASCADE)
+    canton = models.ForeignKey(Model_Fnd_Canton, null=True, blank=True, on_delete=models.CASCADE)
+    direccion = models.TextField(max_length=60, null=True, blank=True)
+    email = models.TextField(max_length=60, null=False, blank=True)  
     nombre_fondo = models.CharField(max_length=300,null=False, blank=False)
     contador = models.ForeignKey(SOCIO,null=False, blank=False, on_delete=models.CASCADE, related_name='contador')
     matricula_contador = models.CharField(max_length=100,null=False, blank=False)

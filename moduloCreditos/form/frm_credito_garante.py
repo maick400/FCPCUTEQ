@@ -36,7 +36,8 @@ class frm_credito_garante (forms.ModelForm):
             'id_credito_otorgado': forms.Select(attrs={'class':'form-select'}),            
             #'id_socio': "Socio",
             'saldo_credito_actual': forms.NumberInput(),
-            'genero': get_values("Select * from obtener_datos_funcion(2)"),
+            'genero': forms.Select(attrs={'class':'form-select'})
+            #'genero': get_values("Select * from obtener_datos_funcion(2)"),
         }
 
         help_texts = {

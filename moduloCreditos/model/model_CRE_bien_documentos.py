@@ -5,8 +5,8 @@ class Model_CRE_bien_documentos (models.Model):
     id_bien_solicitud = models.ForeignKey(Model_CRE_tipo_bien, on_delete=models.CASCADE, null=False, blank=False)
     nombre_documento = models.CharField(max_length=200, null=False, blank=False)
     ruta_documento = models.CharField(max_length=1000, null=False, blank=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    fecha_creacion = models.DateField(null=True, blank=True)
+    fecha_modificacion = models.DateField(null = True, blank=True)
 
     class Meta:
         app_label = "moduloCreditos"
