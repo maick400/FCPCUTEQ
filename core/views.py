@@ -73,6 +73,8 @@ def inicio(request):
 def listar_tablas(request):
     page_title = 'Tablas del sistema'
     tablas = Model_CORE_tabla.objects.all()
+    
+    
     frm_crear = Form_CORE_tabla
 
     if request.method == 'GET':
@@ -188,8 +190,9 @@ def tabla_estructura(request, pk):
         next_linea = estructura_tablas.get_next_linea()
         for i in range(len(ids_campo)):
             object_valor = Model_CORE_valores.objects.create(valor=valor[i], activo='True', linea=next_linea, id_campo_id=ids_campo[i])
-        
-        return render(request, 'core/tablas_parametros/campo_tabla_estructura.html', {'title':page_title,'tabla': tabla})
+        return redirect('core:tabla_estructura', pk= pk)
+        # return render(request, 'core/tablas_parametros/campo_tabla_estructura.html', {'title':page_title,'tabla': tabla, 'pk': pk})
+    
         
 def update_estructura_tabla(request, pk):    
     # model_valor = Model_CORE_tabla.objects.get(id_tabla = 1)
