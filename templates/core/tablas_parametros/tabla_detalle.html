@@ -1,0 +1,106 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+        
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="form-group d-flex mb-3 justify-content-between">
+                <h3>{{tabla.nombre_tabla}}</h3>
+                <div>
+                    <a  style="margin-right: 1vw" class="btn btn-success p-2" href="{% url 'core:tabla_estructura' tabla.id_tabla %}">
+                        Ver estructura y Registrar
+                    </a>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Agregar campo
+                    </button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="table-responsive">                   
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>                               
+                                <th scope="col">ID</th>
+                                <th scope="col">Columna/Campo</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>      
+                            {% for campo in campos %}
+                            <tr>                                
+                                <td>{{ campo.id_campo }}</td>
+                                <td>{{ campo.nombre_campo }}</td>
+                                <td>
+                                    <a href="{% url 'core:detalle_valor' campo.id_campo %}" class="btn btn-primary">Ver</button>
+                                    </a>
+                                
+                                    <a href="{% url 'core:detalle_valor' campo.id_campo %}" class="btn btn-primary">Editar</button>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            {%  endfor %}        
+                        </tbody>
+                    </table>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Modal -->
+  <form action="" method="POST">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+            {% csrf_token %}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo campo - Tabla: {{tabla.nombre_tabla}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">   
+                        <label class="control-label" for="id_nombre_campo">Campo</label>
+                        <div class=" ">
+                            <input type="text" name="nombre_campo" class=" form-control" required="true" id="id_nombre_campo">                                    
+                        </div>        
+                    </div>
+                </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+          
+          
+            <input type="hidden" name="id_tabla" value="{{tabla.id_tabla}}"/>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          
+        </div>
+      </div>
+    </div>
+</div>
+</form>
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}

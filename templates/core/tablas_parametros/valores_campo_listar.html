@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+   
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre de la tabla</th>
+                                <th scope="col">Número de la tabla</th>
+                                <th scope="col">Opciones</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for valor_campo in valores_campo %}
+                            <tr>
+                                <td>{{ valor_campo.id_valor }}</td>
+                                <td>{{ valor_campo.valor }}</td>
+                                <td>{{ valor_campo.activo }}</td>
+                                <td>
+
+                                    <form action="{% url 'core:detalle_tabla'  tabla.id_tabla %}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Ver</button>
+                                    </form>
+                                    <form action="{% url 'core:editar_tabla'  tabla.id_tabla %}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}
