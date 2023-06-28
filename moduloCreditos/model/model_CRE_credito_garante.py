@@ -5,7 +5,11 @@ from moduloCreditos.model.model_CRE_solicitud_credito import Model_CRE_solicitud
 
 
 class Model_CRE_credito_garante (models.Model):    
+class Model_CRE_credito_garante (models.Model):    
     id_credito_otorgado = models.ForeignKey(Model_CRE_credito_otorgado, on_delete=models.CASCADE, name=False)
+    #id_socio = models.ForeignKey(on_delete=models.CASCADE, null=False)
+    saldo_cancelado = models.DecimalField(max_digits=12, decimal_places=2, name=False)
+    monto_garantia = models.DecimalField(max_digits=12, decimal_places=2, name=False)
     #id_socio = models.ForeignKey(on_delete=models.CASCADE, null=False)
     saldo_cancelado = models.DecimalField(max_digits=12, decimal_places=2, name=False)
     monto_garantia = models.DecimalField(max_digits=12, decimal_places=2, name=False)
