@@ -41,8 +41,10 @@ class CORE_Tabla_estructura():
             cursor.execute("select max(linea) from core_valor_campo")
             rows = cursor.fetchall()
 
-            if(rows):
+            if rows[0][0]:                
                 next_linea = rows[0][0] + 1
+            else:
+                next_linea = 1
 
         return next_linea
     

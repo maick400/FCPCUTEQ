@@ -6,7 +6,7 @@ app_name = 'fondo'
 
 urlpatterns = [
     path( 'create/tipo_descuento', crear_tipo_descuento, name='crear_tipo_descuento'),
-    path( 'list/tipo_descuento', listar_tipo_descuento, name='listar_tipo_descuento'),
+    path( 'tipo_descuento', listar_tipo_descuento, name='listar_tipo_descuento'),
     path( 'edit/tipo_descuento/<pk>', editar_tipo_descuento, name='editar_tipo_descuento'),
     path('create/socio', crear_socio, name='crear_socio'),
     path('list/socio', listar_socio, name='lista_socio'),
