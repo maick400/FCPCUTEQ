@@ -1,0 +1,97 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+   
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="form-group mb-3 d-flex justify-content-between">
+                <h3>Tablas</h3>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCreateTabla">
+                    Agregar tabla
+                </button>            
+            </div>
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nombre de la tabla</th>
+                                <th scope="col">Número de la tabla</th>
+                                <th scope="col">Opciones</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tabla in tablas %}
+                            <tr>
+                                <td>{{ tabla.id_tabla }}</td>
+                                <td>{{ tabla.nombre_tabla }}</td>
+                                <td>{{ tabla.numero_tabla }}</td>
+                                <td>
+
+                                    <a class="btn btn-primary" href="{% url 'core:detalle_tabla'  tabla.id_tabla %}">Ver</a>
+                                    <form action="{% url 'core:editar_tabla'  tabla.id_tabla %}" method="GET">
+                                        <button type="submit" class="btn btn-primary">Editar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--MODAL-->
+    <div class="modal fade" id="modalCreateTabla" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+                {% csrf_token %}
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo valor - Campo: {{campo.nombre_campo}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                       
+                        {{ frm | bootstrap }}
+
+                    </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    
+              
+              
+                <input type="hidden" name="id_tabla" value="{{tabla.id_tabla}}"/>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}

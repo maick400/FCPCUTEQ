@@ -7,8 +7,8 @@ class Model_CRE_tipo_bien_atributo(models.Model):
     atributo = models.CharField(max_length=100, null=False, blank=False)
     tipo_dato = models.CharField(max_length=100, null=False, blank=False)
     obligatorio = models.BooleanField(null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    fecha_creacion = models.DateField(null=True)
+    fecha_modificacion = models.DateField(null = True)
 
     class Meta:
         app_label = "moduloCreditos"

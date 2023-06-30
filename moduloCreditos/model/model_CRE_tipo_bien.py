@@ -5,9 +5,9 @@ class Model_CRE_tipo_bien(models.Model):
     nombre_bien = models.CharField(max_length=100, null=False, blank=False)
     avaluo = models.DecimalField(max_digits=12, decimal_places=2, null=False, blank = False)
     observacion = models.CharField(max_length=500, null=True, blank=True)
-    es_aceptado = models.BooleanField(null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    es_aceptado = models.BooleanField(null=True)
+    fecha_creacion = models.DateField(null=True)
+    fecha_modificacion = models.DateField(null = True)
 
     def __str__(self) -> str:
         return self.nombre_bien

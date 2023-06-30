@@ -8,8 +8,8 @@ class Model_CRE_credito_pagos (models.Model):
     numero_cuota = models.IntegerField(null=False)
     fecha_cancelacion = models.DateTimeField(null=False)
     pago_interes = models.DecimalField(max_digits=12, decimal_places=2, null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    fecha_creacion = models.DateField(null=True)
+    fecha_modificacion = models.DateField(null = True)
     
 
     class Meta:
