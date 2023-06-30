@@ -11,6 +11,9 @@ from moduloFondo.model.model_FND_socio_aportaciones import *
 
 from moduloFondo.model.model_FND_tipo_identificación import *
 
+from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
+from moduloFondo.model.Model_FND_provincia import *
+from moduloFondo.model.Model_FND_canton import *
 
 
 

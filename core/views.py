@@ -209,13 +209,6 @@ def update_estructura_tabla(request, pk):
    
     return render(request, 'core/modals/modal_update_tabla_estructura.html', {'frm':frm_tabla_estructura, 'registro_editar': registro_editar} )
     
-
-def get_table(request):
-    tabla = Core_Tabla(183)
-    print(tabla.datos)
-    return render(request, 'core/tablas_parametros/get_tabla.html', {'tabla':tabla})
-
-    
 def modulo_contable (request):
     page_title = 'Módulo contable'
     return render(request, 'core/modulos/contable/modulo_contable.html' , {'title':page_title})
