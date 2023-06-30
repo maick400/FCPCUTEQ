@@ -9,10 +9,12 @@ class Model_CRE_credito_garante (models.Model):
     #id_socio = models.ForeignKey(on_delete=models.CASCADE, null=False)
     saldo_cancelado = models.DecimalField(max_digits=12, decimal_places=2, name=False)
     monto_garantia = models.DecimalField(max_digits=12, decimal_places=2, name=False)
+    #id_socio = models.ForeignKey(on_delete=models.CASCADE, null=False)
+    saldo_cancelado = models.DecimalField(max_digits=12, decimal_places=2, name=False)
+    monto_garantia = models.DecimalField(max_digits=12, decimal_places=2, name=False)
     fecha_creacion = models.DateTimeField(null=False)
     fecha_modificacion = models.DateTimeField(null = False)
 
-    genero = models.TextField() #borrar luego
 
     class Meta:
         app_label = "moduloCreditos"

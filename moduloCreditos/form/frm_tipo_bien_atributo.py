@@ -10,14 +10,19 @@ class frm_tipo_bien_atributo(forms.ModelForm):
             ID_TIPO_BIEN,   
             ATRIBUTO,
             TIPO_DATO,
-            OBLIGATORIO
+            OBLIGATORIO,
+            'fecha_creacion',
+            'fecha_modificacion',
         )
 
         labels={
             ID_TIPO_BIEN: "Bien",
             ATRIBUTO: "Atributo",
             TIPO_DATO: "Tipo de dato",
-            OBLIGATORIO: "Obligatorio"
+            OBLIGATORIO: "Obligatorio",
+            'fecha_creacion': "Fecha de creación",
+            'fecha_modificacion': "Fecha de modificación",
+
         }
 
 
@@ -25,7 +30,9 @@ class frm_tipo_bien_atributo(forms.ModelForm):
             ID_TIPO_BIEN: forms.Select(),
             ATRIBUTO: forms.TextInput(),
             TIPO_DATO: forms.TextInput(),
-            OBLIGATORIO: forms.CheckboxInput()
+            OBLIGATORIO: forms.CheckboxInput(),
+            'fecha_creacion': forms.DateInput(),
+            'fecha_modificacion': forms.DateInput(),
         }
 
         help_texts = {

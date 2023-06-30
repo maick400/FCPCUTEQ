@@ -1,0 +1,146 @@
+{% load static %}
+
+<div class="sidebar bg-dark" style="background-color: #1B7505;">
+    <div class="logo-details">
+      <!-- <i class='bx bxl-c-plus-plus'></i> -->
+      <i><box-icon class="btn-menu" color="white" size="lg" type='solid' name='bank'></box-icon></i> 
+
+      <span class="logo_name btn-menu m-0">FCPC-UTEQ</span>
+    </div>
+
+    <ul class="nav-links ">
+      <li>
+        <div class="iocn-link bg-success">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Módulo Contable </span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu bg-success">
+          <li><a class="link_name" href="#">Módulo Contable</a></li>
+          <li><a href="{% url 'core:mod_contable' %}">Modulo de Contable</a></li>
+          <li><a href="{% url 'core:mod_admin' %}">Modulo de Sistema</a></li>
+
+        </ul>
+      </li>
+
+
+    
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <i><box-icon color="white" type='regular' name='home-alt-2'></box-icon></i> 
+        
+          <span class="link_name">Inicio</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Inicio</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Créditos</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Creditos</a></li>
+          <li><a href="#">Pagos</a></li>
+          <li><a href="#">Solicitud de credito</a></li>
+          <li><a href="#">Créditos</a></li>
+          <li><a href="#">Reportes</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Aportes</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Aportes</a></li>
+          <li><a href="#">Descuento a partícipes</a></li>
+          <li><a href=" {% url 'creditos:crear_tipo_credito' %} ">Crear tipo de credito</a></li>
+          <li><a href="#">Solicitud de credito</a></li>
+          <li><a href="#">Reportes</a></li>
+
+        </ul>
+      </li>
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Reportes</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Reportes</a></li>
+          <li><a href="#">Deuda de partícipes</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Personal</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Personal</a></li>
+          <li><a href="#">Ver personal</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Parámetros</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Parámetros</a></li>
+          <li><a hx-post="/clicked" hx-trigger="click" hx-target="#parent-div"   >Tipo de descuentos</a></li>
+          <li><a href="#">Tipo de Identificaciones</a></li>
+        </ul>
+      </li>
+
+
+
+
+     
+   
+
+    
+  </li>
+  
+  <div id="cont">
+    <div id="contOne" class="align-bottom">
+      <div class="container">
+        <img id="estiloImgBotton" 
+        src="{% static 'img/logo_dev_coders.svg'%}">
+        <p id="equipo"></p>
+      </div>
+    </div>
+</div>
+</ul>
+  </div>
+
+
+
+

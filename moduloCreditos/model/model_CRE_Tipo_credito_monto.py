@@ -7,8 +7,8 @@ class Model_CRE_tipo_credito_montos (models.Model):
     monto_inicial = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     monto_final = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     plazo_maximo_meses = models.IntegerField(null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    fecha_creacion = models.DateField(null=True)
+    fecha_modificacion = models.DateField(null = True)
 
     class Meta:
         app_label = "moduloCreditos"

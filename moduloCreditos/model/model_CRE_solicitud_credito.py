@@ -11,8 +11,8 @@ class Model_CRE_solicitud_credito (models.Model):
     monto = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     numero_cuotas = models.IntegerField(null=False)
     tasa_interes = models.DecimalField(max_digits=3, decimal_places=2, null=False)
-    fecha_creacion = models.DateTimeField(null=False)
-    fecha_modificacion = models.DateTimeField(null = False)
+    fecha_creacion = models.DateTimeField(null=True)
+    fecha_modificacion = models.DateTimeField(null = True)
 
 
     def __str__(self) -> str:
