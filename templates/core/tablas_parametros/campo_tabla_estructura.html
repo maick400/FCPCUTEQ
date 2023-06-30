@@ -1,0 +1,127 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+
+<!-- CONTENEDOR GENERAL -->
+<div class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow"> 
+    <div class="container mt-4">
+    
+        <!-- El div para la tabla -->
+            <div class="row">           
+                <div class="form-group mb-3 d-flex justify-content-between">
+                    <!-- Button trigger modal -->
+                    <h3>{{tabla.nombre_tabla}}</h3>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCreateValores">
+                        Agregar valores
+                    </button>            
+                </div>
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    {% for dato in tabla.columnas %}
+                                    <th scope="col">{{dato}}</th>
+                                    {% endfor %}
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in tabla.rows %}
+                                <tr>   
+                                    {% for data in row %}                                
+                                    <td>{{ data }}</td>
+                                    {% endfor %}
+                                    <td>
+                                        <btn class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#modalEditValores"
+                                            hx-post=" {% url 'core:update_estructura' pk=row.0 %} "
+                                            hx-trigger="click"
+                                            hx-target="#update_estruc"
+                                        >
+                                        Editar</btn>
+                                        <btn class="btn btn-danger">Deshabilitar</btn>
+                                    </td>                           
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!--MODAL PARA CREAR VALORES DE UNA TABLA CON SUS RESPECTIVOS CAMPOS-->
+        <form action="{% url 'core:tabla_estructura' pk %}" method="POST" class="">
+        <div class="modal fade" id="modalCreateValores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                {% csrf_token %}
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar registro - Tabla: {{tabla.rows_sin_estructura.0.1}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% for row in tabla.rows_sin_estructura %}
+                        
+                                <div class="form-group mb-2">                               
+                                    <input type="hidden" name="id_campo_id" class=" form-control" value="{{row.2}}" required="true">
+                                    <label class="control-label" for="valor">{{row.3}}</label>                            
+                                    <input type="text" name="valor" class=" form-control" required="true">
+                                </div>
+                            
+                            {% endfor %}
+                        
+                        </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>    
+                    <button type="submit" class="btn btn-primary">Guardar</button>          
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+        <!--MODAL PARA EDITAR LOS VALORES DE UNA TABLA CON SUS RESPECTIVOS CAMPOS-->
+        <form action="" method="UPDATE" class="">
+        <div class="modal fade" id="modalEditValores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                    {% csrf_token %}
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modificar registro - Tabla: {{tabla.rows_sin_estructura.0.1}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="update_estruc">
+                           
+                            </div>
+                        </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>    
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+
+        <div class="row">
+            <div class="col">
+                {% buttons %}
+                {% endbuttons %}
+            </div>
+        </div>
+
+    
+    {% endblock content %}
+{% comment %} Botones {% endcomment %}
