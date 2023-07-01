@@ -250,7 +250,7 @@ def editar_operadora_telefonica(request, pk):
 #--------------------------------------------------- FND_PROVINCIA ---------------------------------------------------#
 
 #LISTAR PROVINCIA
-@permission_required('moduloFondo.add_model_fnd_provincia')
+@permission_required('moduloFondo.view_model_fnd_provincia')
 def listar_provincias(request):
     pag_titulo = 'Lista de provincias'
     provincias = Model_FND_provincia.objects.all()
@@ -263,6 +263,7 @@ def listar_provincias(request):
 #FIN LISTAR PROVINCIA
 
 #AGREGAR PROVINCIA
+@permission_required('moduloFondo.add_model_fnd_provincia')
 def agregar_provincia(request):
     pag_titulo = 'Registrar provincia'
     frm_crear = Frm_Provincia
@@ -281,6 +282,7 @@ def agregar_provincia(request):
 #FIN AGREGAR PROVINCIA
 
 #EDITAR PROVINCIA
+@permission_required('moduloFondo.change_model_fnd_provincia')
 def editar_provincia(request, pk):
     provincia = get_object_or_404(Model_FND_provincia, pk=pk)
     form = Frm_Provincia(instance=provincia)
