@@ -7,17 +7,15 @@
 {% comment %} Formulario {% endcomment %}
 {% block content %}
 
-<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" enctype="multipart/form-data" >
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" >
 
     {% csrf_token %}
     {% comment %} {% bootstrap_form frm  %}
 
     {% buttons %}    {% endcomment %}
 
-    <div class="row " >
-
+    <div class="row" >
         {{frm|bootstrap}}
-
     </div>
 
  {% buttons %}

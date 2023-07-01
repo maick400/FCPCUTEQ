@@ -1,22 +1,13 @@
 from django import  forms
-from moduloFondo.model.Model_FND_canton import Model_FND_canton
+from moduloFondo.model.model_FND_canton import Model_FND_canton
 
 #FORMULARIO DE PROVINCIAS
 class Frm_Canton(forms.ModelForm):
     class Meta:
         model = Model_FND_canton
         fields = (
-            'codigo',
-            'cod_provincia',
-            'canton'
-        )
-        
-        
-        labels= {
-            'codigo': 'Código',
-            'cod_provincia': 'Provincia',
-            'canton': 'Cantón'
-        }
+            '__all__'
+        )                
 
         widgets = {
             'codigo': forms.TextInput(),

@@ -6,10 +6,10 @@
 
 {% comment %} Formulario {% endcomment %}
 {% block content %}
-{% csrf_token %}
+
 <form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
 
-    
+    {% csrf_token %}
 
     <!-- CONTENEDOR GENERAL -->
     <div class="container mt-4">
@@ -19,7 +19,6 @@
             
             <div class="col">
                 <form action="" method="POST">
-                   
                     <div class="input-group">
                         <input type="text" class="form-control" name="search_term"
                             placeholder="Buscar una provincia" value="{{ search_term }}"
@@ -40,9 +39,6 @@
                     </div>
                 </form>
             </div>
-
-
-            
         </div>
 
         <!-- El div para la tabla -->
@@ -62,9 +58,7 @@
                             <tr>
                                 <td>{{ provincia.codigo }}</td>
                                 <td>{{ provincia.provincia }}</td>
-                                <td>         
-                                
-                                    
+                                <td>                                   
                                     <a href= "{% url 'fondo:editar_provincia' provincia.codigo %}" class="btn btn-primary">
                                         Editar
                                     </a>

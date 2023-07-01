@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+
+{% comment %} Formulario {% endcomment %}
+{% block content %}
+
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow">
+
+    {% csrf_token %}
+
+    <!-- CONTENEDOR GENERAL -->
+    <div class="container mt-4">
+
+        <!-- El div para el buscador junto con su form pero sin accion -->
+        <div class="row mb-3">
+            
+            <div class="col">
+                <form action="" method="POST">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search_term"
+                            placeholder="Buscar un cantón" value="{{ search_term }}"
+                            hx-post= "{% url 'fondo:buscar_canton' %}"
+                            hx-trigger="input"
+                            hx-target="#actualizar_busqueda">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit"
+                                hx-post= "{% url 'fondo:buscar_canton' %}"
+                                hx-trigger="click"
+                                hx-target="#actualizar_busqueda">
+                                Buscar
+                            </button>
+                        </div>
+                        <div class="mr-2">
+                            <a href="{% url 'fondo:agregar_canton' %}" class="btn btn-success">Agregar cantón</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- El div para la tabla -->
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive" id="actualizar_busqueda">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Provincia</th>
+                                <th scope="col">Cantón</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for canton in pagina_paginator %}
+                            <tr>
+                                <td>{{ canton.codigo }}</td>
+                                <td>{{ canton.cod_provincia }}</td>
+                                <td>{{ canton.canton }}</td>
+                                <td>                                   
+                                    <a href= "{% url 'fondo:editar_canton' pk=canton.codigo %}" class="btn btn-primary">
+                                        Editar
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- El div para la paginacion -->
+        <div class="row">
+            <div class="col">
+                <nav aria-label="Paginación">
+                    <ul class="pagination justify-content-center">
+                        {% if pagina_paginator.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ pagina_paginator.previous_page_number }}"
+                                aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in pagina_paginator.paginator.page_range %}
+                        {% if pagina_paginator.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if pagina_paginator.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ pagina_paginator.next_page_number }}"
+                                aria-label="Siguiente">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            {% buttons %}
+            {% endbuttons %}
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+{% comment %} Botones {% endcomment %}

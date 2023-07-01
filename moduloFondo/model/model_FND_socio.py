@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from moduloFondo.model.choices.choices_FND_socios import *
-from moduloFondo.model.Model_FND_provincia import Model_FND_provincia
+from moduloFondo.model.model_FND_provincia import Model_FND_provincia
 
 class Model_FND_socio(models.Model):
     id_socio = models.BigAutoField(primary_key=True, null=False, blank=False, verbose_name='ID Socio')    
