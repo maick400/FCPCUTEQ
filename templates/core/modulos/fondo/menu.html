@@ -114,19 +114,20 @@
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Parámetros</a></li>
-          <li><a hx-post="/clicked" hx-trigger="click" hx-target="#parent-div"   >Tipo de descuentos</a></li>
+          <li>
+            <a class="link_name" href="#">
+                      Parámetros
+            </a></li>
+          <li><a 
+            {% comment %} hx-post= "{% url 'fondo:listar_provincias' %}"
+            hx-trigger="click"
+            hx-target="#contenido_mostrar" {% endcomment %}
+            >
+            Tipo de descuentos
+          </a></li>
           <li><a href="#">Tipo de Identificaciones</a></li>
         </ul>
       </li>
-
-
-
-
-     
-   
-
-    
   </li>
   
   <div id="cont">
@@ -140,6 +141,34 @@
 </div>
 </ul>
   </div>
+
+  
+    
+  <section class="home-section overflow-auto" id="contenido_mostrar">
+
+    <!-- <div class="fixed-bottom">
+         <div class="container">
+           <img id="estiloImgBotton" 
+           src="{% static 'img/logo_dev_coders.svg'%}">
+         </div>
+       </div>-->
+   
+     <!--yy
+     <div class="home-content sticky-top">
+         <span class="text">{{title}}</span>
+     </div>-->
+     <div class=" d-flex justify-content-center container-fluid pt-2 p-5">
+         {% block content%}
+         {% endblock content%}
+
+     </div>
+
+     <script src="{% static  'js/aside-menu.js' %}"></script>
+
+
+ </section>
+
+
 
 
 

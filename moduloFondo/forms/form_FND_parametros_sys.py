@@ -1,5 +1,5 @@
 from django import forms
-from moduloFondo.model.model_FND_parametros_sys import * 
+from moduloFondo.model.model_CORE_parametros_sys import * 
 
 class Frm_Fnd_Parametros_Sys(forms.ModelForm):
     class Meta:

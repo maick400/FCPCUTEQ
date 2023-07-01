@@ -1,7 +1,7 @@
 from django import  forms
 from moduloFondo.model.model_FND_operadora_telf import Model_FND_operadora_telf
 
-#FORMULARIO DE CARGO DE EMPLEADO
+#FORMULARIO DE OPERADORA TELEFONICA
 class frm_operadora(forms.ModelForm):
     class Meta:
         model = Model_FND_operadora_telf
