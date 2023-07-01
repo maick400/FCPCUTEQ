@@ -1,7 +1,7 @@
 from django import  forms
 from moduloFondo.model.model_FND_socio import Model_FND_socio
 from django.contrib.auth.models import User
-from moduloFondo.model.Model_FND_provincia import Model_FND_provincia
+from moduloFondo.model.model_FND_provincia import Model_FND_provincia
 
 
 

@@ -14,16 +14,16 @@ from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
 
 from moduloFondo.forms.form_FND_Provincia  import *
-from moduloFondo.model.Model_FND_provincia import *
+from moduloFondo.model.model_FND_provincia import *
 
 from moduloFondo.forms.form_FND_canton import *
-from moduloFondo.model.Model_FND_canton import *
+from moduloFondo.model.model_FND_canton import *
 
 from django.core.paginator import Paginator
 from moduloFondo.model.model_FND_operadora_telf import *
 
 from moduloFondo.forms.form_FND_tipo_fondo_complementario import *
-from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
+from moduloFondo.model.model_FND_tipo_fondo_complementario import *
 
 
 #------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#

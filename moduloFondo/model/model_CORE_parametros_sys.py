@@ -2,8 +2,8 @@ from django.db import models
 from core.model.choices.choices_FND_parametros_sys import * 
 
 
-from moduloFondo.model.Model_FND_tipo_fondo_complementario import Model_FND_tipo_fondo_complementario as TipoFondo
-from moduloFondo.model.Model_FND_provincia import Model_FND_provincia as Provincia
+from moduloFondo.model.model_FND_tipo_fondo_complementario import Model_FND_tipo_fondo_complementario as TipoFondo
+from moduloFondo.model.model_FND_provincia import Model_FND_provincia as Provincia
 from moduloFondo.model.model_FND_Personal import Model_FND_Empleado_Cargo as Personal
 
 
