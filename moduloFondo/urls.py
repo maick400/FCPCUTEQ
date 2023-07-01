@@ -29,6 +29,12 @@ urlpatterns = [
     path('canton/registrar/', agregar_canton, name='agregar_canton'),
     path('canton/editar/<pk>', editar_canton, name='editar_canton'),
     path('canton/buscar/', buscar_canton, name='buscar_canton'),
+    
+     path('create/tipo_fondo', crear_tipo_fondo, name='crear_tipo_fondo'),
+    path('list/tipo_fondo', listar_tipo_fondo, name='listar_tipo_fondo'),
+    path('edit/tipo_fondo/<pk>', editar_tipo_fondo, name='editar_tipo_fondo'),
+    path('buscar/tipo_fondo/', buscar_tipo_fondo, name='buscar_tipo_fondo'),
+
 
 
 ]

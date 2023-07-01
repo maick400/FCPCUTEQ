@@ -14,10 +14,10 @@ from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
 
 from moduloFondo.forms.form_FND_Provincia  import *
-from moduloFondo.model.Model_FND_provincia import *
+from moduloFondo.model.model_FND_provincia import *
 
 from moduloFondo.forms.form_FND_canton import *
-from moduloFondo.model.Model_FND_canton import *
+from moduloFondo.model.model_FND_canton import *
 
 from django.core.paginator import Paginator
 
@@ -264,6 +264,7 @@ def agregar_provincia(request):
 
     if request.method == 'GET':
         return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
+        return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
     if request.method  == 'POST':
         frm_crear = Frm_Provincia(request.POST)
         if frm_crear.is_valid():
@@ -272,6 +273,7 @@ def agregar_provincia(request):
             return redirect('fondo:listar_provincias')
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
             return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
 #FIN AGREGAR PROVINCIA
 
@@ -296,6 +298,7 @@ def editar_provincia(request, pk):
                       {'form': form, 'provincia': provincia,'pk': pk,'title': pag_titulo})
 #FIN EDITAR PROVINCIA
  
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE PROVINCIAS
 #AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE PROVINCIAS
 def buscar_provincia(request):    
   
@@ -386,12 +389,6 @@ def buscar_canton(request):
 
     return render(request, urls_canton['buscar'], {'pagina_paginator': page_obj})
 #FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE CANTONES
-    return render(request, 'fondo/provincia/provincia_busqueda.html', {'pagina_paginator': page_obj})
-#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
-
-
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
 # CREAR OPERADORA TELEFONICA
 @permission_required('moduloFondo.add_model_fnd_operadora_telf')
 def crear_operadora_telefonica(request):
