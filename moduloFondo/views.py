@@ -257,9 +257,7 @@ def listar_provincias(request):
 def agregar_provincia(request):
     pag_titulo = 'Registrar provincia'
     frm_crear = Frm_Provincia
-
     if request.method == 'GET':
-        return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
         return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
     if request.method  == 'POST':
         frm_crear = Frm_Provincia(request.POST)
@@ -270,7 +268,8 @@ def agregar_provincia(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
-            return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
+    messages.warning(request, 'Se ha generado un error desconocido')
+    return redirect('core:home')
 #FIN AGREGAR PROVINCIA
 
 #EDITAR PROVINCIA
@@ -344,6 +343,8 @@ def agregar_canton(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_canton['crear'], {'title':pag_titulo,'frm':frm_crear})
+    messages.warning(request, 'Se ha generado un error desconocido')
+    return redirect('core:home')
 #FIN AGREGAR CANTON
 
 #EDITAR CANTON
@@ -399,7 +400,8 @@ def crear_operadora_telefonica(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
-        
+    messages.warning(request, 'Se ha generado un error desconocido')
+    return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
 
 
 
@@ -467,7 +469,8 @@ def crear_tipo_fondo(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_tipo_fondo["crear"], {'title':pag_titulo,'frm':frm_crear})
-        
+    messages.warning(request, 'Se ha generado un error desconocido')
+    return render(request, urls_tipo_fondo["crear"], {'title':pag_titulo,'frm':frm_crear})
 
 
 

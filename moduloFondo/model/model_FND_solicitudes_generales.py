@@ -16,7 +16,7 @@ class Model_FND_solicitudes_generales(models.Model):
     class Meta: 
         app_label = "moduloFondo"
         managed = True
-        db_table = 'fnd_socio'
-        verbose_name = 'un Socio'
-        verbose_name_plural = 'Socios'
+        db_table = 'fnd_solicitudes_generales'
+        verbose_name = 'una solicitud general'
+        verbose_name_plural = 'solicitudes generales'
         

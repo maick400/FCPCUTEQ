@@ -4,7 +4,7 @@ from moduloFondo.model.choices.choices_FND_socios import *
 from moduloFondo.model.model_FND_provincia import Model_FND_provincia
 
 class Model_FND_socio(models.Model):
-    id_socio = models.BigAutoField(primary_key=True, null=False, blank=False, verbose_name='ID Socio')    
+    id_socio = models.BigAutoField(primary_key=True, null=False,verbose_name='ID Socio')    
     id_usuario = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE, verbose_name='Usuario', db_column='id_usuario')
     id_provincia = models.ForeignKey(Model_FND_provincia,max_length=5, null=False, blank=False,on_delete=models.CASCADE, verbose_name='Provincia', db_column='codigo_provincia')
     nombres = models.TextField(max_length=200, null=False, blank=False, verbose_name='Nombres')
@@ -19,7 +19,7 @@ class Model_FND_socio(models.Model):
     ciudad = models.TextField(max_length=100, null=False, blank=False, verbose_name='Ciudad')
     provincia = models.TextField(max_length=5, null=False, blank=False, verbose_name='Provincia')
     direccion = models.TextField(max_length=100, null=False, blank=False, verbose_name='Dirección')
-    foto_ruta = models.TextField(max_length=None, null=False, blank=False, verbose_name='Ruta de Foto')
+    foto_ruta = models.TextField(max_length=None, null=False, blank=False, verbose_name='Ruta de Foto' )
     total_ahorrado = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, verbose_name='Total Ahorrado')
     total_garantizado = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, verbose_name='Total Garantizado')
     total_monto_creditos_vigente = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, verbose_name='Total Monto Créditos Vigente')

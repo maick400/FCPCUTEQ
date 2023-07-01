@@ -1,11 +1,17 @@
 from django.urls import path
 from moduloFondo.forms import *
 from moduloFondo.views import *
+from vw_casanova import *
+from vw_jhon import *
+from vw_ochoa import *
+from vw_pina import *
+
+
 
 app_name = 'fondo'
 urlpatterns = [
     
-    path('operadora/registrar/', crear_operadora_telefonica, name='crear_operadora_telefonica'),
+    path('operadora/registrar/', crear_operadora_telefonica, name='crear_operadora_telefonica'), 
     path('operadora/listar/', listar_operadora_telefonica, name='listar_operadora_telefonica'),
     path('operadora/editar/<pk>', editar_operadora_telefonica, name='editar_operadora_telefonica'),
     path('operadora/buscar/', buscar_operadora, name='buscar_operadora'),
@@ -28,7 +34,7 @@ urlpatterns = [
     path('canton/registrar/', agregar_canton, name='agregar_canton'),
     path('canton/editar/<pk>', editar_canton, name='editar_canton'),
     path('canton/buscar/', buscar_canton, name='buscar_canton'),
-    
+     
     path('tipo_fondo/registrar/', crear_tipo_fondo, name='crear_tipo_fondo'),
     path('tipo_fondo/listar', listar_tipo_fondo, name='listar_tipo_fondo'),
     path('tipo_fondo/editar/<pk>/', editar_tipo_fondo, name='editar_tipo_fondo'),
