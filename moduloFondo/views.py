@@ -1,18 +1,25 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required, login_required
+from django.db.models import Q
+
+
 from moduloFondo.forms.form_FND_tipo_descuento  import *
 from moduloFondo.forms.form_FND_socios  import *
 from moduloFondo.forms.form_FND_parametros_sys  import *
 from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
 
+from moduloFondo.forms.form_FND_Provincia  import *
+
+from moduloFondo.model.Model_FND_provincia import *
+
 
 
 from django.core.paginator import Paginator
 
 
-#-------------------------- FND_TIPO_DESCUENTO -----------------------#
+#------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
 # CREAR TIPO DE DESCUENTO
 @login_required
 
@@ -237,3 +244,73 @@ def editar_operadora_telefonica(request, pk):
     else:  
         return render(request, 'fondo/operadora/operadora_editar.html', 
                       {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
+    
+
+
+#--------------------------------------------------- FND_PROVINCIA ---------------------------------------------------#
+
+#LISTAR PROVINCIA
+@permission_required('moduloFondo.add_model_fnd_provincia')
+def listar_provincias(request):
+    pag_titulo = 'Lista de provincias'
+    provincias = Model_FND_provincia.objects.all()
+
+    paginator = Paginator(provincias, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, urls_provincia['listar'], {'title': pag_titulo, 'pagina_paginator': page_obj})
+#FIN LISTAR PROVINCIA
+
+#AGREGAR PROVINCIA
+def agregar_provincia(request):
+    pag_titulo = 'Registrar provincia'
+    frm_crear = Frm_Provincia
+
+    if request.method == 'GET':
+        return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+    if request.method  == 'POST':
+        frm_crear = Frm_Provincia(request.POST)
+        if frm_crear.is_valid():
+            frm_crear.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('fondo:listar_provincias')
+        else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+#FIN AGREGAR PROVINCIA
+
+#EDITAR PROVINCIA
+def editar_provincia(request, pk):
+    provincia = get_object_or_404(Model_FND_provincia, pk=pk)
+    form = Frm_Provincia(instance=provincia)
+    pag_titulo = 'Editar provincia'
+    if request.method == 'POST':
+        form = Frm_Provincia(request.POST, instance=provincia)
+        if form.is_valid():
+            form.save()
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            return redirect(request, 'fondo/provincia/provincia_ver.html', {'form': form})
+        else:
+            return render(request, 'fondo/provincia/provincia_editar.html', 
+                      {'form': form, 'pk': pk,'title': pag_titulo})
+    else:  
+        return render(request, 'fondo/provincia/provincia_editar.html', 
+                      {'form': form, 'pk': pk,'title': pag_titulo})
+#FIN EDITAR PROVINCIA
+ 
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+def buscar_provincia(request):    
+  
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    provincias = Model_FND_provincia.objects.filter(Q(codigo__icontains=search_term) | Q(provincia__icontains=search_term)).order_by('codigo')
+
+    paginator = Paginator(provincias, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'fondo/provincia/provincia_busqueda.html', {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA

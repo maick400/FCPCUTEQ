@@ -1,0 +1,26 @@
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for provincia in pagina_paginator %}
+        <tr>
+            <td>{{ provincia.codigo }}</td>
+            <td>{{ provincia.provincia }}</td>
+            <td>                                   
+                <a href= "{% url 'fondo:editar_provincia' pk=provincia.codigo %}" class="btn btn-primary">
+                    Editar                                    
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

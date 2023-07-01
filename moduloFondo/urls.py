@@ -5,9 +5,9 @@ from moduloFondo.views import *
 app_name = 'fondo'
 
 urlpatterns = [
-    path( 'create/tipo_descuento', crear_tipo_descuento, name='crear_tipo_descuento'),
-    path( 'tipo_descuento', listar_tipo_descuento, name='listar_tipo_descuento'),
-    path( 'edit/tipo_descuento/<pk>', editar_tipo_descuento, name='editar_tipo_descuento'),
+    path('create/tipo_descuento', crear_tipo_descuento, name='crear_tipo_descuento'),
+    path('tipo_descuento', listar_tipo_descuento, name='listar_tipo_descuento'),
+    path('edit/tipo_descuento/<pk>', editar_tipo_descuento, name='editar_tipo_descuento'),
     path('create/socio', crear_socio, name='crear_socio'),
     path('list/socio', listar_socio, name='lista_socio'),
     path('edit/socio/<pk>', editar_socio, name='editar_socio'),
@@ -19,5 +19,11 @@ urlpatterns = [
     path('create/operadora', crear_operadora_telefonica, name='crear_operadora_telefonica'),
     path('list/operadora', listar_operadora_telefonica, name='listar_operadora_telefonica'),
     path('edit/operadora/<pk>', editar_operadora_telefonica, name='editar_operadora_telefonica'),
+
+    path('provincias/lista/', listar_provincias, name='listar_provincias'),
+    path('provincias/registrar/', agregar_provincia, name='agregar_provincia'),
+    path('provincias/editar/<pk>', editar_provincia, name='editar_provincia'),
+    path('provincias/buscar/', buscar_provincia, name='buscar_provincia'),
+
 
 ]
