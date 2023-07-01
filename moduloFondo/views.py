@@ -20,15 +20,15 @@ from moduloFondo.forms.form_FND_canton import *
 from moduloFondo.model.Model_FND_canton import *
 
 from django.core.paginator import Paginator
-
 from moduloFondo.model.model_FND_operadora_telf import *
+
+from moduloFondo.forms.form_FND_tipo_fondo_complementario import *
+from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
+
 
 #------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
 # CREAR TIPO DE DESCUENTO
-@login_required
-
 #Se debe cambiar el permiso para que sea el de crear socio
-@permission_required('moduloFondo.add_model_fnd_tipo_descuento')
 def crear_tipo_descuento(request):
     pag_titulo = 'Crear tipo de descuento'
     frm_crear = frm_tipo_descuento
@@ -65,7 +65,6 @@ def listar_tipo_descuento(request):
 
 
 #Se debe cambiar el permiso para que sea el de editar los tipos de descuentos
-@permission_required('moduloFondo.change_model_fnd_tipo_descuento')
 def editar_tipo_descuento(request, pk):
     tipo_descuento = get_object_or_404(Model_FND_tipo_descuento, pk=pk)
     form = frm_tipo_descuento(instance=tipo_descuento)
@@ -179,7 +178,6 @@ def ver_parametros(request):
     return render(request, 'fondo/parametros/parametros_ver.html', {'title': pag_titulo, 'frm': formulario})
 
 #EDITAR PARAMETROS DEL SISTEMA
-@permission_required('moduloFondo.change_model_fnd_parametros_sys')
 def editar_parametros(request, pk):
     parametro = get_object_or_404(Model_FND_Parametros_sys, pk=pk)
     form = Frm_Fnd_Parametros_Sys(instance=parametro)
@@ -195,7 +193,6 @@ def editar_parametros(request, pk):
 
 
 # CREAR CARGO DE EMPLEADO
-@permission_required('moduloFondo.add_model_fnd_empleado_cargo')
 def crear_cargo_empleado(request):
     pag_titulo = 'Registrar cargo de empleado'
     frm_crear = frm_cargo_empleado
@@ -257,7 +254,6 @@ def listar_provincias(request):
 #FIN LISTAR PROVINCIA
 
 #AGREGAR PROVINCIA
-@permission_required('moduloFondo.add_model_fnd_provincia')
 def agregar_provincia(request):
     pag_titulo = 'Registrar provincia'
     frm_crear = Frm_Provincia
@@ -333,7 +329,6 @@ def listar_canton(request):
 #FIN LISTAR CANTON
 
 #AGREGAR CANTON
-@permission_required('moduloFondo.add_model_fnd_canton')
 def agregar_canton(request):
     pag_titulo = 'Registrar canton'
     frm_crear = Frm_Canton
@@ -390,7 +385,6 @@ def buscar_canton(request):
     return render(request, urls_canton['buscar'], {'pagina_paginator': page_obj})
 #FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE CANTONES
 # CREAR OPERADORA TELEFONICA
-@permission_required('moduloFondo.add_model_fnd_operadora_telf')
 def crear_operadora_telefonica(request):
     pag_titulo = 'Registrar operadora telefonica'
     frm_crear = frm_operadora
@@ -456,12 +450,9 @@ def buscar_operadora(request):
 #FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
 
 
+# !-----------------------------------------------Tipo Fondo --------------------------------------
 
-from moduloFondo.forms.form_FND_tipo_fondo_complementario import *
-from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
-
-#CREAR TIPO FONDO
-@permission_required('moduloFondo.add_model_fnd_operadora_telf')
+# *CREAR TIPO FONDO
 def crear_tipo_fondo(request):
     pag_titulo = 'Registrar tipo fondo'
     frm_crear = Frm_Tipo_Fondo_Complementario
@@ -503,6 +494,8 @@ def editar_tipo_fondo(request, pk):
         form = Frm_Tipo_Fondo_Complementario(request.POST, instance=tipo_fondo)
         if form.is_valid():
             form.save()
+            messages.success(request,"Se ha editado correctamente el tipo de fondo")
+            
             # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
             return redirect("fondo:listar_tipo_fondo")
         else:

@@ -3,18 +3,17 @@ from moduloFondo.forms import *
 from moduloFondo.views import *
 
 app_name = 'fondo'
-
 urlpatterns = [
-    path('create/operadora', crear_operadora_telefonica, name='crear_operadora_telefonica'),
-    path('list/operadora', listar_operadora_telefonica, name='listar_operadora_telefonica'),
-    path('edit/operadora/<pk>', editar_operadora_telefonica, name='editar_operadora_telefonica'),
-    path('buscar/operadora/', buscar_operadora, name='buscar_operadora'),
-
-
+    
+    path('operadora/registrar/', crear_operadora_telefonica, name='crear_operadora_telefonica'),
+    path('operadora/listar/', listar_operadora_telefonica, name='listar_operadora_telefonica'),
+    path('operadora/editar/<pk>', editar_operadora_telefonica, name='editar_operadora_telefonica'),
+    path('operadora/buscar/', buscar_operadora, name='buscar_operadora'),
+    
     #----------------------RUTAS SOCIO----------------------#
     path('socio/registrar/', crear_socio, name='crear_socio'),
     path('socio/lista/', listar_socio, name='listar_socio'),
-    path('socio/editar/<pk>', editar_socio, name='editar_socio'),
+    path('socio/editar/<pk>/', editar_socio, name='editar_socio'),
     path('socio/buscar/', buscar_socio, name='buscar_socio'),
     #----------------------RUTAS SOCIO----------------------#
 
@@ -30,10 +29,10 @@ urlpatterns = [
     path('canton/editar/<pk>', editar_canton, name='editar_canton'),
     path('canton/buscar/', buscar_canton, name='buscar_canton'),
     
-     path('create/tipo_fondo', crear_tipo_fondo, name='crear_tipo_fondo'),
-    path('list/tipo_fondo', listar_tipo_fondo, name='listar_tipo_fondo'),
-    path('edit/tipo_fondo/<pk>', editar_tipo_fondo, name='editar_tipo_fondo'),
-    path('buscar/tipo_fondo/', buscar_tipo_fondo, name='buscar_tipo_fondo'),
+    path('tipo_fondo/registrar/', crear_tipo_fondo, name='crear_tipo_fondo'),
+    path('tipo_fondo/listar', listar_tipo_fondo, name='listar_tipo_fondo'),
+    path('tipo_fondo/editar/<pk>/', editar_tipo_fondo, name='editar_tipo_fondo'),
+    path('tipo_fondo/buscar', buscar_tipo_fondo, name='buscar_tipo_fondo'),
 
 
 

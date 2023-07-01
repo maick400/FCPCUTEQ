@@ -15,7 +15,7 @@ class Frm_Tipo_Fondo_Complementario(forms.ModelForm):
         labels= {
             'codigo': 'Código',
             'tipo': 'Tipo',
-            'descripcion': 'Cantón'
+            'descripcion': 'Descripción'
         }
 
         widgets = {
