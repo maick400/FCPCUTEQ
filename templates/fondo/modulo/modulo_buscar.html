@@ -1,0 +1,42 @@
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID Módulo</th>
+            <th scope="col">Nombre del módulo</th>
+            <th scope="col">URL</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Activo</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for modulo in pagina_paginator %}
+        <tr>
+            <td>{{ modulo.id_modulo }}</td>
+            <td>{{ modulo.nombre_modulo }}</td>                                
+            <td>{{ modulo.url_modulo }}</td>
+            <td>
+                <div class="text-center">
+                    <img src="/media/{{modulo.foto_modulo_ruta}}" style="height: 10vh;" class="img-fluid rounded mx-auto">
+                </div>                                    
+            </td>
+            <td>{{ modulo.descripcion }}</td>
+            <td>
+                <input type="checkbox" {% if  modulo.activo == True %} 
+                    checked {% endif  %} disabled>
+                
+            </td>
+            <td>                                   
+                <a href= "{% url 'fondo:editar_modulo' pk=modulo.id_modulo %}" class="btn btn-primary">
+                    Editar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -13,13 +13,14 @@
         <div class="iocn-link bg-success">
           <a href="#">
             <i class='bx bx-collection' ></i>
-            <span class="link_name">Módulo Contable </span>
+            <span class="link_name">Módulo de Fondo </span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu bg-success">
-          <li><a class="link_name" href="#">Módulo Contable</a></li>
-          <li><a href="{% url 'core:mod_contable' %}">Modulo de Contable</a></li>
+          <li><a class="link_name" href="#">Módulo de Fondo</a></li>
+          <li><a href="{% url 'core:mod_contable' %}">Modulo Contable</a></li>
+          <li><a href="{% url 'core:mod_admin' %}">Modulo de Créditos</a></li>
           <li><a href="{% url 'core:mod_admin' %}">Modulo de Sistema</a></li>
 
         </ul>
@@ -117,7 +118,11 @@
           <li>
             <a class="link_name" href="#">
                       Parámetros
-            </a></li>
+            </a>
+          </li>
+          <li><a href="{% url 'fondo:listar_modulo' %}">Módulos</a></li>
+          <li><a href="{% url 'fondo:listar_provincias' %}">Provincias</a></li>
+          <li><a href="{% url 'fondo:listar_cantones' %}">Cantones</a></li>
           <li><a 
             {% comment %} hx-post= "{% url 'fondo:listar_provincias' %}"
             hx-trigger="click"
