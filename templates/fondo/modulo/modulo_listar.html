@@ -22,12 +22,12 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="search_term"
                             placeholder="Buscar un módulo" value="{{ search_term }}"
-                            hx-post= "{% url 'fondo:buscar_canton' %}"
+                            hx-post= "{% url 'fondo:buscar_modulo' %}"
                             hx-trigger="input"
                             hx-target="#actualizar_busqueda">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="submit"
-                                hx-post= "{% url 'fondo:buscar_canton' %}"
+                                hx-post= "{% url 'fondo:buscar_modulo' %}"
                                 hx-trigger="click"
                                 hx-target="#actualizar_busqueda">
                                 Buscar
@@ -75,7 +75,7 @@
                                     
                                 </td>
                                 <td>                                   
-                                    <a href= "" class="btn btn-primary">
+                                    <a href= "{% url 'fondo:editar_modulo' pk=modulo.id_modulo %}" class="btn btn-primary">
                                         Editar
                                     </a>
                                 </td>

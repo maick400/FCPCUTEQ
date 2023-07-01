@@ -24,7 +24,7 @@ def listar_modulos(request):
 
 
 #AGREGAR MÓDULO
-@permission_required('moduloFondo.add_model_fnd_modulo')
+@permission_required('moduloFondo.add_model_fnd_modulo') #type: ignore
 def agregar_modulo(request):
     pag_titulo = 'Registrar módulo'
     frm_crear = Frm_Modulo
@@ -42,3 +42,43 @@ def agregar_modulo(request):
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_modulo['crear'], {'title':pag_titulo,'frm':frm_crear})
 #FIN AGREGAR MÓDULO
+
+#EDITAR MÓDULO
+def editar_modulo(request, pk):
+    modulo = get_object_or_404(Model_FND_modulo, pk=pk)
+    form = Frm_Modulo(instance=modulo)
+    pag_titulo = 'Editar módulo'
+    if request.method == 'POST':
+        form = Frm_Modulo(request.POST, instance=modulo)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"Se ha editado correctamente el tipo de fondo")
+            
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            return redirect("fondo:listar_modulo")
+        else:
+            return render(request, urls_modulo["editar"], 
+                      {'form': form, 'tipo_fondo': modulo, 'pk': pk,'title': pag_titulo})
+    else:  
+        return render(request, urls_modulo["editar"], 
+                      {'form': form, 'tipo_fondo': modulo, 'pk': pk,'title': pag_titulo})
+    
+#FIN EDITAR MÓDULO
+
+#BUSCAR MÓDULO AJAX HTMX
+def buscar_modulo(request):
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    tipo_fondo = Model_FND_modulo.objects.filter(
+        Q(id_modulo__icontains=search_term) |
+        Q(nombre_modulo__icontains=search_term)
+    )
+
+    paginator = Paginator(tipo_fondo, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, urls_modulo["buscar"], {'pagina_paginator': page_obj})
+
+#FIN DE BUSCAR MÓDULO AJAX HTMX
