@@ -1,18 +1,28 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required, login_required
+from django.db.models import Q
+
+
 from moduloFondo.forms.form_FND_tipo_descuento  import *
+
 from moduloFondo.forms.form_FND_socios  import *
+from moduloFondo.model.model_FND_socio import *
+
 from moduloFondo.forms.form_FND_parametros_sys  import *
 from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
+
+from moduloFondo.forms.form_FND_Provincia  import *
+
+from moduloFondo.model.Model_FND_provincia import *
 
 
 
 from django.core.paginator import Paginator
 
 
-#-------------------------- FND_TIPO_DESCUENTO -----------------------#
+#------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
 # CREAR TIPO DE DESCUENTO
 @login_required
 
@@ -70,56 +80,95 @@ def editar_tipo_descuento(request, pk):
         return render(request, 'fondo/tipo_descuento/tipo_descuento_modificar.html', {'form': form, 'tipo_descuento': tipo_descuento, 'pk': pk,'title': pag_titulo})
     
 
+#------------------------------------------------- FND_SOCIO -------------------------------------------------#
 
 # CREAR SOCIO
 @permission_required('moduloFondo.add_model_fnd_socio')
 def crear_socio(request):
-    pag_titulo = 'Registrar socio'
-    frm_crear = frm_socio
-    if request.method == 'GET':
-        return render(request, 'fondo/socio/socio_crear.html', {'title':pag_titulo,'frm':frm_crear})
-    if request.method  == 'POST':
-        frm_crear = frm_socio(request.POST)
-        if frm_crear.is_valid():
-            frm_crear.save()
-            messages.success(request, 'Se ha generado corectamente el formulario')
-            return redirect('core:home')
-        else:
-            messages.warning(request, 'Se ha generado un error desconocido')
-            return render(request, 'fondo/socio/socio_crear.html', {'title':pag_titulo,'frm':frm_crear})
-        
-# LISTA DE SOCIOS      
+    try:
+        pag_titulo = 'Registrar socio'
+        frm_crear = frm_socio
+        if request.method == 'GET':
+            return render(request, urls_socio['crear'], {'title':pag_titulo,'frm':frm_crear})
+        if request.method  == 'POST':
+            frm_crear = frm_socio(request.POST)
+            if frm_crear.is_valid():
+                frm_crear.save()
+                messages.success(request, 'Se ha generado corectamente el formulario')
+                return redirect('fondo:listar_socio')
+            else:
+                messages.warning(request, 'Se ha generado un error desconocido')
+                return render(request, urls_socio['crear'], {'title':pag_titulo,'frm':frm_crear})
+    except:
+        messages.warning(request, 'Se ha generado un error desconocido')
+        return redirect('core:home')
+    
+#LISTA DE SOCIOS      
 @permission_required('moduloFondo.view_model_fnd_socio')
 def listar_socio(request):
-    pag_titulo = 'Lista de socios'
-    socios = Model_FND_socio.objects.all()
-    paginator = Paginator(socios, 10)
+    try:
+        pag_titulo = 'Lista de socios'
+        socios = Model_FND_socio.objects.all()
+        paginator = Paginator(socios, 10)
 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-    return render(request, 'fondo/socio/socio_lista.html', {'title': pag_titulo, 'socios_list': page_obj})
+        return render(request, urls_socio['listar'], {'title': pag_titulo, 'socios_list': page_obj})
+    
+    except:
+       messages.warning(request, 'Se ha generado un error desconocido')
+       return redirect('core:home')
+#FIN LISTA DE SOCIOS 
 
-
-# EDITAR SOCIO
+#EDITAR SOCIO
 @permission_required('moduloFondo.change_model_fnd_socio')
 def editar_socio(request, pk):
-    socio = get_object_or_404(Model_FND_socio, pk=pk)
-    form = frm_socio(instance=socio)
-    pag_titulo = 'Editar socio'
-    if request.method == 'POST':
-        form = frm_socio(request.POST, instance=socio)
-        if form.is_valid():
-            form.save()
-            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
-            return render(request, 'fondo/socio/socio_lista.html', {'form': form})
-    else:  
-        return render(request, 'fondo/socio/socio_editar.html', {'form': form, 'socio': socio, 'pk': pk,'title': pag_titulo})
-    
+    try:
+        socio = get_object_or_404(Model_FND_socio, pk=pk)
+        form = frm_socio(instance=socio)
+        pag_titulo = 'Editar socio'
+        if request.method == 'POST':
+            form = frm_socio(request.POST, instance=socio)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Se ha generado corectamente el formulario')
+                return redirect('fondo:listar_socio')
+            else:
+                 return render(request, urls_socio['editar'], 
+                               {'form': form, 'socio': socio, 'pk': pk,'title': pag_titulo})
+        else:       
+            return render(request, urls_socio['editar'], 
+                          {'form': form, 'socio': socio, 'pk': pk,'title': pag_titulo})
+    except:
+        messages.warning(request, 'Se ha generado un error desconocido')
+        return redirect('core:home')
+#FIN EDITAR SOCIO
 
-# PARAMETROS DEL SISTEMA
+#BUSCAR SOCIO 
+@permission_required('moduloFondo.view_model_fnd_socio')
+def buscar_socio(request):
+    try:
+        search_term = ''
+        if 'search_term' in request.POST:
+            search_term = request.POST['search_term']
+        
+        socios = Model_FND_socio.objects.filter(Q(nombres__icontains=search_term) | Q(apellido_paterno__icontains=search_term) | Q(apellido_materno__icontains=search_term) | Q(identificacion__icontains=search_term) | Q(ciudad__icontains=search_term)).order_by('id_socio')
+        paginator = Paginator(socios, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, urls_socio['buscar'], {'socios_list': page_obj})
+    except:
+        messages.warning(request, 'Se ha generado un error desconocido')
+        return redirect('core:home')
+#FIN BUSCAR SOCIO 
 
-#SE SUPONE QUE LOS PARAMETROS SE CREAR UNA VEZ Y SOLO SE PODRAN MODIFICAR.
+
+#------------------------------------------------- FND_FIN_SOCIO -------------------------------------------------#
+
+
+#------------------------------------------------- FND_PARAMETROS DEL SISTEMA -------------------------------------------------#
+
 
 #VISULIZAR PARAMETROS DEL SISTEMA
 
@@ -237,3 +286,76 @@ def editar_operadora_telefonica(request, pk):
     else:  
         return render(request, 'fondo/operadora/operadora_editar.html', 
                       {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
+    
+
+
+#--------------------------------------------------- FND_PROVINCIA ---------------------------------------------------#
+
+#LISTAR PROVINCIA
+@permission_required('moduloFondo.view_model_fnd_provincia')
+def listar_provincias(request):
+    pag_titulo = 'Lista de provincias'
+    provincias = Model_FND_provincia.objects.all()
+
+    paginator = Paginator(provincias, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, urls_provincia['listar'], {'title': pag_titulo, 'pagina_paginator': page_obj})
+#FIN LISTAR PROVINCIA
+
+#AGREGAR PROVINCIA
+@permission_required('moduloFondo.add_model_fnd_provincia')
+def agregar_provincia(request):
+    pag_titulo = 'Registrar provincia'
+    frm_crear = Frm_Provincia
+
+    if request.method == 'GET':
+        return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+    if request.method  == 'POST':
+        frm_crear = Frm_Provincia(request.POST)
+        if frm_crear.is_valid():
+            frm_crear.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('fondo:listar_provincias')
+        else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+#FIN AGREGAR PROVINCIA
+
+#EDITAR PROVINCIA
+@permission_required('moduloFondo.change_model_fnd_provincia')
+def editar_provincia(request, pk):
+    provincia = get_object_or_404(Model_FND_provincia, pk=pk)
+    form = Frm_Provincia(instance=provincia)
+    pag_titulo = 'Editar provincia'
+    if request.method == 'POST':
+        form = Frm_Provincia(request.POST, instance=provincia)
+        if form.is_valid():
+            form.save()
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('fondo:listar_provincias')
+        else:
+            return render(request, 'fondo/provincia/provincia_editar.html', 
+                      {'form': form, 'provincia': provincia, 'pk': pk,'title': pag_titulo})
+    else:  
+        return render(request, 'fondo/provincia/provincia_editar.html', 
+                      {'form': form, 'provincia': provincia,'pk': pk,'title': pag_titulo})
+#FIN EDITAR PROVINCIA
+ 
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+def buscar_provincia(request):    
+  
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    provincias = Model_FND_provincia.objects.filter(Q(codigo__icontains=search_term) | Q(provincia__icontains=search_term)).order_by('codigo')
+
+    paginator = Paginator(provincias, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'fondo/provincia/provincia_busqueda.html', {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA

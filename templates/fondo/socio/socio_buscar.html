@@ -1,0 +1,42 @@
+
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Identificación</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">País</th>
+            <th scope="col">Género</th>
+            <th scope="col">N° aportaciones</th>
+            <th scope="col">Total ahorrado</th>
+            <th scope="col">Total Garantizado</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for socio in socios_list %}
+        <tr>
+            <td>{{ socio.identificacion }}</td>
+            <td>{{ socio.nombres }}</td>
+            <td>{{ socio.apellido_paterno }} {{ socio.apellido_materno }}</td>
+            <td>{{ socio.ciudad }}</td>
+            <td>{{ socio.provincia }}</td>
+            <td>{{ socio.pais }}</td>
+            <td>{{ socio.genero }}</td>
+            <td>{{ socio.numero_aportaciones }}</td>
+            <td>{{ socio.total_ahorrado }}</td>
+            <td>{{ socio.total_garantizado }}</td>
+            <td>
+                <a href= "{% url 'fondo:editar_socio' pk=socio.id_socio %}" class="btn btn-primary">
+                    Editar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

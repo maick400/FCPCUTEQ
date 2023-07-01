@@ -20,17 +20,33 @@
 
         <!-- El div para el buscador junto con su form pero sin accion -->
         <div class="row mb-3">
+
             <div class="col">
-                <form action="" method="GET">
+                <form action="" method="POST">
                     <div class="input-group">
                         <input type="text" class="form-control" name="search_term"
-                            placeholder="Buscar socio" value="{{ search_term }}">
+                            placeholder="Buscar un socio" value="{{ search_term }}"
+                            hx-post= "{% url 'fondo:buscar_socio' %}"
+                            hx-trigger="input"
+                            hx-target="#actualizar_busqueda">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <button class="btn btn-primary" type="submit"
+                                hx-post= "{% url 'fondo:buscar_socio' %}"
+                                hx-trigger="click"
+                                hx-target="#actualizar_busqueda">
+                                Buscar
+                            </button>
+                        </div>
+                        <div class="mr-2">
+                            <a href="{% url 'fondo:crear_socio' %}" class="btn btn-success">Agregar socio</a>
                         </div>
                     </div>
                 </form>
             </div>
+
+
+
+
         </div>
 
 
@@ -39,29 +55,40 @@
         <!-- El div para la tabla -->
         <div class="row">
             <div class="col">
-                <div class="table-responsive">
+                <div class="table-responsive" id="actualizar_busqueda">
                     <table class="table table-bordered table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">E-mail</th>
+                                <th scope="col">Identificación</th>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Provincia</th>
+                                <th scope="col">País</th>
                                 <th scope="col">Género</th>
-                                <th scope="col">Tipo de prestación</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">F. nacimiento</th>
+                                <th scope="col">N° aportaciones</th>
+                                <th scope="col">Total ahorrado</th>
+                                <th scope="col">Total Garantizado</th>
+                                <th scope="col">Editar</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for socio in socios_list %}
                             <tr>
-                                <td>{{ socio.email }}</td>
+                                <td>{{ socio.identificacion }}</td>
+                                <td>{{ socio.nombres }}</td>
+                                <td>{{ socio.apellido_paterno }} {{ socio.apellido_materno }}</td>
+                                <td>{{ socio.ciudad }}</td>
+                                <td>{{ socio.provincia }}</td>
+                                <td>{{ socio.pais }}</td>
                                 <td>{{ socio.genero }}</td>
-                                <td>{{ socio.tipo_prestacion }}</td>
-                                <td>{{ socio.estado }}</td>
-                                <td>{{ socio.fecha_nacimiento }}</td>
+                                <td>{{ socio.numero_aportaciones }}</td>
+                                <td>{{ socio.total_ahorrado }}</td>
+                                <td>{{ socio.total_garantizado }}</td>
                                 <td>
-                                    <form action="{% url 'fondo:editar_socio' socio.id_socio %}" method="GET">
-                                        <button type="submit" class="btn btn-primary">Editar</button>
-                                      </form>
+                                    <a href= "{% url 'fondo:editar_socio' pk=socio.id_socio %}" class="btn btn-primary">
+                                        Editar
+                                    </a>
                                 </td>
                             </tr>
                             {% endfor %}
