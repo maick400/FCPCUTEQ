@@ -399,8 +399,12 @@ def crear_operadora_telefonica(request):
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
             return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
+
+    return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
+        
         
 
+            
 
 
 # LISTA DE OPERADORAS TELEFONICAS
@@ -520,4 +524,7 @@ def buscar_tipo_fondo(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, urls_tipo_fondo["buscar"], {'pagina_paginator': page_obj})
+
+def predeterminado(request):
+    pass
 #FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
