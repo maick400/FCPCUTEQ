@@ -7,7 +7,7 @@
 {% comment %} Formulario {% endcomment %}
 {% block content %}
 
-<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" >
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 roudend shadow" enctype="multipart/form-data" >
 
     {% csrf_token %}
     {% comment %} {% bootstrap_form frm  %}

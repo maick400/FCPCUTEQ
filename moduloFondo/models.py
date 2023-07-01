@@ -13,6 +13,7 @@ from django.db import models
 
 from moduloFondo.model.Model_FND_provincia import *
 from moduloFondo.model.Model_FND_canton import *
+from moduloFondo.model.model_FND_socio import *
 # from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
 
 

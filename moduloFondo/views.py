@@ -85,13 +85,13 @@ def editar_tipo_descuento(request, pk):
 # CREAR SOCIO
 @permission_required('moduloFondo.add_model_fnd_socio')
 def crear_socio(request):
-    try:
         pag_titulo = 'Registrar socio'
         frm_crear = frm_socio
         if request.method == 'GET':
             return render(request, urls_socio['crear'], {'title':pag_titulo,'frm':frm_crear})
         if request.method  == 'POST':
-            frm_crear = frm_socio(request.POST)
+            frm_crear = frm_socio(request.POST , request.FILES)
+
             if frm_crear.is_valid():
                 frm_crear.save()
                 messages.success(request, 'Se ha generado corectamente el formulario')
@@ -99,7 +99,6 @@ def crear_socio(request):
             else:
                 messages.warning(request, 'Se ha generado un error desconocido')
                 return render(request, urls_socio['crear'], {'title':pag_titulo,'frm':frm_crear})
-    except:
         messages.warning(request, 'Se ha generado un error desconocido')
         return redirect('core:home')
     
