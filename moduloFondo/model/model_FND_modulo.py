@@ -5,7 +5,7 @@ class Model_FND_modulo(models.Model):
     nombre_modulo = models.TextField(max_length=100,blank=False,null=False, verbose_name='Nombre del módulo')
     app_label = models.TextField(max_length=100,blank=False,null=False, verbose_name='Nombre de la app')
     url_modulo = models.TextField(blank=False,null=False,verbose_name='URL del módulo')
-    foto_modulo_ruta = models.ImageField(max_length=1000, blank=False,null=False,verbose_name='Foto del módulo', upload_to='moduloFondo/modulo')
+    foto_modulo_ruta = models.ImageField(max_length=1000, blank=False,null=False,verbose_name='Foto del módulo', upload_to='moduloFondo/modulo/')
     descripcion = models.TextField(blank=False,null=False, verbose_name='Descripción')
     activo = models.BooleanField(null=False, verbose_name='Activo')
     fecha_creacion = models.DateTimeField(blank=False,null=False, auto_now_add=True, verbose_name='Fecha de creación')

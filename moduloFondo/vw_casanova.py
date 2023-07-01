@@ -24,7 +24,7 @@ def listar_modulos(request):
 
 
 #AGREGAR MÓDULO
-@permission_required('moduloFondo.view_model_fnd_modulo')
+@permission_required('moduloFondo.add_model_fnd_modulo')
 def agregar_modulo(request):
     pag_titulo = 'Registrar módulo'
     frm_crear = Frm_Modulo
