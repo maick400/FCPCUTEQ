@@ -1,16 +1,11 @@
 from django.urls import path
 from moduloFondo.forms import *
 from moduloFondo.views import *
-from vw_casanova import *
-from vw_pina import *
-from vw_jhon import *
-from vw_ochoa import *
+from moduloFondo.vw_casanova import *
+from moduloFondo.vw_pina import *
+from moduloFondo.vw_jhon import *
+from moduloFondo.vw_ochoa import *
 
-
-from vw_casanova import *
-from vw_jhon import *
-from vw_ochoa import *
-from vw_pina import *
 
 
 
@@ -47,16 +42,16 @@ urlpatterns = [
     path('tipo_fondo/buscar', buscar_tipo_fondo, name='buscar_tipo_fondo'),
     
     # TODO----------------------RUTAS TIPO FONDO----------------------#
-    path('solicitudes_generales/registrar/', agregar_modulo, name='crear_tipo_fondo'),
-    path('solicitudes_generales/listar', predeterminado, name='listar_tipo_fondo'),
-    path('solicitudes_generales/editar/<pk>/', predeterminado, name='editar_tipo_fondo'),
-    path('solicitudes_generales/buscar', predeterminado, name='buscar_tipo_fondo'),
+    # path('solicitudes_generales/registrar/', agregar_modulo, name='crear_tipo_fondo'),
+    # path('solicitudes_generales/listar', , name='listar_tipo_fondo'),
+    # path('solicitudes_generales/editar/<pk>/', , name='editar_tipo_fondo'),
+    # path('solicitudes_generales/buscar', , name='buscar_tipo_fondo'),
     # TODO----------------------RUTAS TIPO FONDO----------------------#
 
-    path('modulos/registrar/', predeterminado, name='crear_tipo_fondo'),
-    path('modulos/listar', predeterminado, name='listar_tipo_fondo'),
-    path('modulos/editar/<pk>/', predeterminado, name='editar_tipo_fondo'),
-    path('modulos/buscar', predeterminado, name='buscar_tipo_fondo'),
+    # path('modulos/registrar/', predeterminado, name='crear_tipo_fondo'),
+    # path('modulos/listar', predeterminado, name='listar_tipo_fondo'),
+    # path('modulos/editar/<pk>/', predeterminado, name='editar_tipo_fondo'),
+    # path('modulos/buscar', predeterminado, name='buscar_tipo_fondo'),
     
     
     
