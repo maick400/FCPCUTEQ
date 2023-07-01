@@ -17,6 +17,8 @@ TIPO_PRESTACION_CHOICES = (
         ('QUI', 'Quirografario'),
         ('PRE', 'Prendario'),
     )
+
+
 ESTADO_CHOICES = (
         ('A', 'ACTIVO'),
         ('I', 'INACTIVO'),

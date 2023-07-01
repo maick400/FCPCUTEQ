@@ -22,7 +22,7 @@ from moduloFondo.model.Model_FND_provincia import *
 from django.core.paginator import Paginator
 
 
-#------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
+#!------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
 # CREAR TIPO DE DESCUENTO
 @login_required
 
