@@ -1,0 +1,27 @@
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Provincia</th>
+            <th scope="col">Cantón</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for canton in pagina_paginator %}
+        <tr>
+            <td>{{ canton.codigo }}</td>
+            <td>{{ canton.cod_provincia }}</td>
+            <td>{{ canton.canton }}</td>
+            <td>                                   
+                <a href= "{% url 'fondo:editar_canton' pk=canton.codigo %}" class="btn btn-primary">
+                    Editar
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

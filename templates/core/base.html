@@ -9,7 +9,6 @@
     <title>{{title}}</title>
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 
 
     {% block menu %}
@@ -17,7 +16,7 @@
     {% endblock menu %}
     
     
-    <section class="home-section overflow-auto">
+    <section class="home-section overflow-auto" id="contenido_mostrar">
 
        <!-- <div class="fixed-bottom">
             <div class="container">

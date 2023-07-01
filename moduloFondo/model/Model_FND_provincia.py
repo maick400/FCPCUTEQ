@@ -1,8 +1,8 @@
 from django.db import models
 
 class Model_FND_provincia(models.Model):
-    codigo = models.CharField(primary_key=True, max_length=5, null=False, blank=False)
-    provincia = models.CharField(null=False, blank=False, max_length=100)
+    codigo = models.CharField(primary_key=True, max_length=5, verbose_name='codigo de provincia',null=False, blank=False)
+    provincia = models.CharField(null=False, blank=False, verbose_name='provincia', max_length=100)
 
     def __str__(self):
         return self.provincia
@@ -10,8 +10,8 @@ class Model_FND_provincia(models.Model):
     class Meta:
         app_label = "moduloFondo"
         constraints = [
-            models.UniqueConstraint(fields=['codigo'], name='un_codigo_provincia'),
-            models.UniqueConstraint(fields=['provincia'], name='un_provincia')
+            models.UniqueConstraint(fields=['codigo'], name='uq_fnd_codigo_provincia'),
+            models.UniqueConstraint(fields=['provincia'], name='uq_fnd_provincia')
         ]
         indexes = [
             models.Index(fields=['codigo'])
@@ -24,6 +24,6 @@ class Model_FND_provincia(models.Model):
 urls_provincia = {
             'crear': 'fondo/provincia/provincia_crear.html',
             'editar': 'fondo/provincia/provincia_editar.html',
-            'listar': 'fondo/provincia/provincia_ver.html',
-            'buscar': 'fondo/provincia/provincia_busqueda.html'
+            'listar': 'fondo/provincia/provincia_listar.html',
+            'buscar': 'fondo/provincia/provincia_buscar.html'
         }

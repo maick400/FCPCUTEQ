@@ -1,5 +1,5 @@
 from django import  forms
-from moduloFondo.model.Model_FND_provincia import Model_FND_provincia
+from moduloFondo.model.model_FND_provincia import Model_FND_provincia
 
 #FORMULARIO DE PROVINCIAS
 class Frm_Provincia(forms.ModelForm):
@@ -34,4 +34,9 @@ class Frm_Provincia(forms.ModelForm):
         }
 
 
-
+urls_provincia = {
+            'crear': 'fondo/provincia/provincia_crear.html',
+            'editar': 'fondo/provincia/provincia_editar.html',
+            'listar': 'fondo/provincia/provincia_listar.html',
+            'buscar': 'fondo/provincia/provincia_buscar.html'
+        }

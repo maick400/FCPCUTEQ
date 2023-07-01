@@ -14,10 +14,10 @@ from moduloFondo.forms.form_FND_cargo_empleado  import *
 from moduloFondo.forms.form_FND_operadora_telf  import *
 
 from moduloFondo.forms.form_FND_Provincia  import *
+from moduloFondo.model.model_FND_provincia import *
 
-from moduloFondo.model.Model_FND_provincia import *
-
-
+from moduloFondo.forms.form_FND_canton import *
+from moduloFondo.model.model_FND_canton import *
 
 from django.core.paginator import Paginator
 
@@ -311,7 +311,7 @@ def agregar_provincia(request):
     frm_crear = Frm_Provincia
 
     if request.method == 'GET':
-        return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+        return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
     if request.method  == 'POST':
         frm_crear = Frm_Provincia(request.POST)
         if frm_crear.is_valid():
@@ -320,7 +320,7 @@ def agregar_provincia(request):
             return redirect('fondo:listar_provincias')
         else:
             messages.warning(request, 'Se ha generado un error desconocido')
-            return render(request, 'fondo/provincia/provincia_crear.html', {'title':pag_titulo,'frm':frm_crear})
+            return render(request, urls_provincia['crear'], {'title':pag_titulo,'frm':frm_crear})
 #FIN AGREGAR PROVINCIA
 
 #EDITAR PROVINCIA
@@ -344,7 +344,7 @@ def editar_provincia(request, pk):
                       {'form': form, 'provincia': provincia,'pk': pk,'title': pag_titulo})
 #FIN EDITAR PROVINCIA
  
-#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE PROVINCIAS
 def buscar_provincia(request):    
   
     search_term = ''
@@ -357,5 +357,80 @@ def buscar_provincia(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'fondo/provincia/provincia_busqueda.html', {'pagina_paginator': page_obj})
-#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+    return render(request, urls_provincia['listar'], {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE PROVINCIAS
+
+
+
+#--------------------------------------------------- FND_CANTON ---------------------------------------------------#
+
+#LISTAR CANTON
+@permission_required('moduloFondo.view_model_fnd_canton')
+def listar_canton(request):
+    pag_titulo = 'Lista de cantones'
+    canton = Model_FND_canton.objects.all()
+
+    paginator = Paginator(canton, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, urls_canton['listar'], {'title': pag_titulo, 'pagina_paginator': page_obj})
+#FIN LISTAR CANTON
+
+#AGREGAR CANTON
+@permission_required('moduloFondo.add_model_fnd_canton')
+def agregar_canton(request):
+    pag_titulo = 'Registrar canton'
+    frm_crear = Frm_Canton
+
+    if request.method == 'GET':
+        return render(request, urls_canton['crear'], {'title':pag_titulo,'frm':frm_crear})
+    if request.method  == 'POST':
+        frm_crear = Frm_Canton(request.POST)
+        if frm_crear.is_valid():
+            frm_crear.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('fondo:listar_provincias')
+        else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, urls_canton['crear'], {'title':pag_titulo,'frm':frm_crear})
+#FIN AGREGAR CANTON
+
+#EDITAR CANTON
+@permission_required('moduloFondo.change_model_fnd_canton')
+def editar_canton(request, pk):
+    canton = get_object_or_404(Model_FND_canton, pk=pk)
+    form = Frm_Canton(instance=canton)
+    pag_titulo = 'Editar cantón'
+    if request.method == 'POST':
+        print("POST")
+        form = Frm_Canton(request.POST, instance=canton)
+        print(form)
+        if form.is_valid():            
+            form.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            return redirect('fondo:listar_cantones')
+        else:
+            return render(request, urls_canton['editar'], 
+                      {'form': form, 'pk': pk,'title': pag_titulo})
+    else:  
+        print("GET")
+        return render(request, urls_canton['editar'], 
+                      {'form': form, 'pk': pk,'title': pag_titulo})
+#FIN EDITAR CANTON
+
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE CANTONES
+def buscar_canton(request):  
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    canton = Model_FND_canton.objects.filter(Q(codigo__icontains=search_term) | Q(canton__icontains=search_term)).order_by('codigo')
+
+    paginator = Paginator(canton, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, urls_canton['buscar'], {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE CANTONES
