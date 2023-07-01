@@ -1,8 +1,8 @@
 from django.db import models
 
 class Model_FND_provincia(models.Model):
-    codigo = models.CharField(primary_key=True, max_length=5, verbose_name='codigo de provincia',null=False, blank=False)
-    provincia = models.CharField(null=False, blank=False, verbose_name='provincia', max_length=100)
+    codigo = models.CharField(primary_key=True, max_length=5, verbose_name='Código de provincia',null=False, blank=False)
+    provincia = models.CharField(null=False, blank=False, verbose_name='Provincia', max_length=100)
 
     def __str__(self):
         return self.provincia

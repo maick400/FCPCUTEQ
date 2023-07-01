@@ -6,16 +6,9 @@ class Frm_Provincia(forms.ModelForm):
     class Meta:
         model = Model_FND_provincia
         fields = (
-            'codigo',
-            'provincia',
-        )
+            '__all__'
+        )        
         
-        
-        labels= {
-            'codigo': 'Código de provincia',
-            'provincia': 'Provincia'
-        }
-
         widgets = {
             'codigo':forms.TextInput(),
             'provincia' : forms.TextInput()     

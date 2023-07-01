@@ -3,9 +3,9 @@ from django.db import models
 from moduloFondo.model.model_FND_provincia import Model_FND_provincia
 
 class Model_FND_canton(models.Model):
-    codigo = models.TextField(primary_key=True, max_length=5, verbose_name='codigo de canton', null=False, blank=False)
-    cod_provincia = models.ForeignKey(Model_FND_provincia, verbose_name='codigo de provincia', db_column='cod_provincia',  null=False, on_delete=models.CASCADE)
-    canton = models.TextField(null=False,  verbose_name='canton', blank=False)
+    codigo = models.TextField(primary_key=True, max_length=5, verbose_name='Código de cantón', null=False, blank=False)
+    cod_provincia = models.ForeignKey(Model_FND_provincia, verbose_name='Código de provincia', db_column='cod_provincia',  null=False, on_delete=models.CASCADE)
+    canton = models.TextField(null=False,  verbose_name='Cantón', blank=False)
 
     class Meta:
         app_label = "moduloFondo"

@@ -6,17 +6,8 @@ class Frm_Canton(forms.ModelForm):
     class Meta:
         model = Model_FND_canton
         fields = (
-            'codigo',
-            'cod_provincia',
-            'canton'
-        )
-        
-        
-        labels= {
-            'codigo': 'Código',
-            'cod_provincia': 'Provincia',
-            'canton': 'Cantón'
-        }
+            '__all__'
+        )                
 
         widgets = {
             'codigo': forms.TextInput(),
