@@ -1,5 +1,5 @@
 from django import  forms
-from moduloFondo.model.model_FND_canton import Model_FND_canton
+from moduloFondo.model.Model_FND_canton import Model_FND_canton
 
 #FORMULARIO DE PROVINCIAS
 class Frm_Canton(forms.ModelForm):

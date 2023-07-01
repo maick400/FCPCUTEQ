@@ -1,6 +1,6 @@
 from django.db import models
 
-from moduloFondo.model.model_FND_provincia import Model_FND_provincia
+from moduloFondo.model.Model_FND_provincia import Model_FND_provincia
 
 class Model_FND_canton(models.Model):
     codigo = models.TextField(primary_key=True, max_length=5, verbose_name='Código de cantón', null=False, blank=False)
