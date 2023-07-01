@@ -20,8 +20,8 @@
                 <form action="" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control" name="search_term"
-                            placeholder="Buscar una operadora" value="{{ search_term }}"
-                            hx-post="{% url "fondo:buscar_operadora" %}"
+                            placeholder="Buscar un tipo de fondo complementario" value="{{ search_term }}"
+                            hx-post="{% url "fondo:buscar_tipo_fondo" %}"
                             hx-trigger="input"
                             hx-target="#actualizar_busqueda">
                         <div class="input-group-append">
@@ -39,16 +39,18 @@
                     <table class="table table-bordered table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Operadora</th>
-
+                                <th scope="col">Tipo fondo</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Editar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for operadora in pagina_paginator %}
+                            {% for tipo_fondo in pagina_paginator %}
                             <tr>
-                                <td>{{ operadora.operadora }}</td>
+                                <td>{{ tipo_fondo.tipo }}</td>
+                                <td>{{ tipo_fondo.descripcion}}</td>
                                 <td>
-                                    <form action="{% url 'fondo:editar_operadora_telefonica' operadora.operadora_id %}" method="GET">
+                                    <form action="{% url 'fondo:editar_tipo_fondo' tipo_fondo.codigo %}" method="GET">
                                         <button type="submit" class="btn btn-primary">Editar</button>
                                       </form>
                                 </td>

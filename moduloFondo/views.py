@@ -21,6 +21,7 @@ from moduloFondo.model.Model_FND_canton import *
 
 from django.core.paginator import Paginator
 
+from moduloFondo.model.model_FND_operadora_telf import *
 
 #------------------------------------------------- FND_TIPO_DESCUENTO -------------------------------------------------#
 # CREAR TIPO DE DESCUENTO
@@ -240,54 +241,6 @@ def editar_cargo_empleado(request, pk):
                       {'form': form, 'cargo_empleado': cargo_empleado, 'pk': pk,'title': pag_titulo})
     
 
-# CREAR OPERADORA TELEFONICA
-@permission_required('moduloFondo.add_model_fnd_operadora_telf')
-def crear_operadora_telefonica(request):
-    pag_titulo = 'Registrar operadora telefonica'
-    frm_crear = frm_operadora
-    if request.method == 'GET':
-        return render(request, 'fondo/operadora/operadora_crear.html', {'title':pag_titulo,'frm':frm_crear})
-    if request.method  == 'POST':
-        frm_crear = frm_operadora(request.POST)
-        if frm_crear.is_valid():
-            frm_crear.save()
-            messages.success(request, 'Se ha generado corectamente el formulario')
-            return redirect('core:home')
-        else:
-            messages.warning(request, 'Se ha generado un error desconocido')
-            return render(request, 'fondo/operadora/operadora_crear.html', {'title':pag_titulo,'frm':frm_crear})
-        
-# LISTA DE OPERADORAS TELEFONICAS
-@permission_required('moduloFondo.view_model_fnd_operadora_telf')
-def listar_operadora_telefonica(request):
-    pag_titulo = 'Lista de operadoras telefonicas'
-    operadoras = Model_FND_operadora_telf.objects.all()
-    paginator = Paginator(operadoras, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'fondo/operadora/operadora_lista.html', {'title': pag_titulo, 'operadoras_list': page_obj})
-
-# EDITAR OPERADORA TELEFONICA
-@permission_required('moduloFondo.change_model_fnd_operadora_telf')
-def editar_operadora_telefonica(request, pk):
-    operadora = get_object_or_404(Model_FND_operadora_telf, pk=pk)
-    form = frm_operadora(instance=operadora)
-    pag_titulo = 'Editar operadora telefonica'
-    if request.method == 'POST':
-        form = frm_operadora(request.POST, instance=operadora)
-        if form.is_valid():
-            form.save()
-            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
-            return render(request, 'fondo/operadora/operadora_lista.html', {'form': form})
-        else:
-            return render(request, 'fondo/operadora/operadora_editar.html', 
-                      {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
-    else:  
-        return render(request, 'fondo/operadora/operadora_editar.html', 
-                      {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
-    
-
-
 #--------------------------------------------------- FND_PROVINCIA ---------------------------------------------------#
 
 #LISTAR PROVINCIA
@@ -433,3 +386,148 @@ def buscar_canton(request):
 
     return render(request, urls_canton['buscar'], {'pagina_paginator': page_obj})
 #FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA DE CANTONES
+    return render(request, 'fondo/provincia/provincia_busqueda.html', {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+# CREAR OPERADORA TELEFONICA
+@permission_required('moduloFondo.add_model_fnd_operadora_telf')
+def crear_operadora_telefonica(request):
+    pag_titulo = 'Registrar operadora telefonica'
+    frm_crear = frm_operadora
+    if request.method == 'GET':
+        return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
+    if request.method  == 'POST':
+        frm_crear = frm_operadora(request.POST)
+        if frm_crear.is_valid():
+            frm_crear.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('core:home')
+        else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, urls_operadora["crear"], {'title':pag_titulo,'frm':frm_crear})
+        
+
+
+
+# LISTA DE OPERADORAS TELEFONICAS
+@permission_required('moduloFondo.view_model_fnd_operadora_telf')
+def listar_operadora_telefonica(request):
+    pag_titulo = 'Lista de operadoras telefonicas'
+    operadoras = Model_FND_operadora_telf.objects.all()
+    paginator = Paginator(operadoras, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, urls_operadora["listar"], {'title': pag_titulo, 'pagina_paginator': page_obj})
+
+# EDITAR OPERADORA TELEFONICA
+@permission_required('moduloFondo.change_model_fnd_operadora_telf')
+def editar_operadora_telefonica(request, pk):
+    operadora = get_object_or_404(Model_FND_operadora_telf, pk=pk)
+    form = frm_operadora(instance=operadora)
+    pag_titulo = 'Editar operadora telefonica'
+    if request.method == 'POST':
+        form = frm_operadora(request.POST, instance=operadora)
+        if form.is_valid():
+            form.save()
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            return redirect("fondo:listar_operadora_telefonica")
+        else:
+            return render(request, urls_operadora["editar"], 
+                      {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
+    else:  
+        return render(request, urls_operadora["editar"], 
+                      {'form': form, 'operadora': operadora, 'pk': pk,'title': pag_titulo})
+    
+
+
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+def buscar_operadora(request):    
+  
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    operadoras = Model_FND_operadora_telf.objects.filter(Q(operadora__icontains=search_term)).order_by('operadora_id')
+
+    paginator = Paginator(operadoras, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'fondo/operadora/operadora_busqueda.html', {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+
+
+
+from moduloFondo.forms.form_FND_tipo_fondo_complementario import *
+from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
+
+#CREAR TIPO FONDO
+@permission_required('moduloFondo.add_model_fnd_operadora_telf')
+def crear_tipo_fondo(request):
+    pag_titulo = 'Registrar tipo fondo'
+    frm_crear = Frm_Tipo_Fondo_Complementario
+    if request.method == 'GET':
+        return render(request, urls_tipo_fondo["crear"], {'title':pag_titulo,'frm':frm_crear})
+    if request.method  == 'POST':
+        frm_crear = Frm_Tipo_Fondo_Complementario(request.POST)
+        if frm_crear.is_valid():
+            frm_crear.save()
+            messages.success(request, 'Se ha generado corectamente el formulario')
+            return redirect('core:home')
+        else:
+            messages.warning(request, 'Se ha generado un error desconocido')
+            return render(request, urls_tipo_fondo["crear"], {'title':pag_titulo,'frm':frm_crear})
+        
+
+
+
+# LISTA DE OPERADORAS TELEFONICAS
+#@permission_required('moduloFondo.view_model_fnd_operadora_telf')
+def listar_tipo_fondo(request):
+    pag_titulo = 'Lista tipo de fondo'
+    operadoras = Model_FND_tipo_fondo_complementario.objects.all()
+    paginator = Paginator(operadoras, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, urls_tipo_fondo["listar"], {'title': pag_titulo, 'pagina_paginator': page_obj})
+
+
+
+
+# EDITAR OPERADORA TELEFONICA
+#@permission_required('moduloFondo.change_model_fnd_operadora_telf')
+def editar_tipo_fondo(request, pk):
+    tipo_fondo = get_object_or_404(Model_FND_tipo_fondo_complementario, pk=pk)
+    form = Frm_Tipo_Fondo_Complementario(instance=tipo_fondo)
+    pag_titulo = 'Editar tipo fondo'
+    if request.method == 'POST':
+        form = Frm_Tipo_Fondo_Complementario(request.POST, instance=tipo_fondo)
+        if form.is_valid():
+            form.save()
+            # Redirecciona a alguna página de éxito o muestra un mensaje de éxito
+            return redirect("fondo:listar_tipo_fondo")
+        else:
+            return render(request, urls_tipo_fondo["editar"], 
+                      {'form': form, 'tipo_fondo': tipo_fondo, 'pk': pk,'title': pag_titulo})
+    else:  
+        return render(request, urls_tipo_fondo["editar"], 
+                      {'form': form, 'tipo_fondo': tipo_fondo, 'pk': pk,'title': pag_titulo})
+    
+
+
+#AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA
+def buscar_tipo_fondo(request):    
+  
+    search_term = ''
+    if 'search_term' in request.POST:
+        search_term = request.POST['search_term']
+
+    tipo_fondo = Model_FND_tipo_fondo_complementario.objects.filter(Q(tipo__icontains=search_term)).order_by('codigo')
+
+    paginator = Paginator(tipo_fondo, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, urls_tipo_fondo["buscar"], {'pagina_paginator': page_obj})
+#FIN AJAX PARA ACTUALIZAR LA BARRA DE BÚSQUEDA

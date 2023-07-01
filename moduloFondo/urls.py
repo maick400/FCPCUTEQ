@@ -5,6 +5,11 @@ from moduloFondo.views import *
 app_name = 'fondo'
 
 urlpatterns = [
+    path('create/operadora', crear_operadora_telefonica, name='crear_operadora_telefonica'),
+    path('list/operadora', listar_operadora_telefonica, name='listar_operadora_telefonica'),
+    path('edit/operadora/<pk>', editar_operadora_telefonica, name='editar_operadora_telefonica'),
+    path('buscar/operadora/', buscar_operadora, name='buscar_operadora'),
+
 
     #----------------------RUTAS SOCIO----------------------#
     path('socio/registrar/', crear_socio, name='crear_socio'),

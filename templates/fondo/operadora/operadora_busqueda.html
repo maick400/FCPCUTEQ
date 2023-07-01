@@ -1,0 +1,23 @@
+{% load bootstrap %}
+{% load bootstrap5 %}
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Operadora</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for operadora in pagina_paginator %}
+        <tr>
+            <td>{{ operadora.operadora }}</td>
+            <td>
+                <form action="{% url 'fondo:editar_operadora_telefonica' operadora.operadora_id %}" method="GET">
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                  </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
