@@ -53,10 +53,10 @@ urlpatterns = [
     # path('solicitudes_generales/buscar', , name='buscar_tipo_fondo'),
     # TODO----------------------RUTAS TIPO FONDO----------------------#
 
-    # path('modulos/registrar/', predeterminado, name='crear_tipo_fondo'),
-    # path('modulos/listar', predeterminado, name='listar_tipo_fondo'),
-    # path('modulos/editar/<pk>/', predeterminado, name='editar_tipo_fondo'),
-    # path('modulos/buscar', predeterminado, name='buscar_tipo_fondo'),
+    path('modulos/registrar/', agregar_modulo, name='crear_tipo_fondo'),
+    path('modulos/listar', listar_modulos, name='listar_tipo_fondo'),
+    path('modulos/editar/<pk>/', editar_modulo, name='editar_tipo_fondo'),
+    path('modulos/buscar', buscar_modulo, name='buscar_tipo_fondo'),
     
     
     
