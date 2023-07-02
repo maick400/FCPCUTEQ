@@ -21,6 +21,7 @@ from moduloFondo.model.model_FND_operadora_telf import *
 
 # from moduloFondo.model.Model_FND_tipo_fondo_complementario import *
 
+from moduloFondo.model.model_FND_solicitudes_generales import *
 
 
 
