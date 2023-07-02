@@ -222,5 +222,14 @@ def modulo_sistema (request):
     page_title = 'Módulo contable'
     return render(request, 'core/modulos/sistema/modulo_sistema.html' , {'title':page_title})
 
+from moduloFondo.model.model_FND_modulo import *
+
+def modulo_general (request):
+    # tablas_guia =  
+    page_title = 'Módulos general'
+    modulos = Model_FND_modulo.objects.all()
+    return render(request, 'core/modulos/general/modulos_general.html' , {'title':page_title, 'modulos': modulos})
+
+
 
 

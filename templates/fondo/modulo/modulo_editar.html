@@ -9,7 +9,9 @@
 
 <!-- Este if valida si existe la ID sino pues no carga el formulario evitando caidas -->
 
-<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 rounded shadow">      
+<form action="" method="POST" class="p-4 mt-5 bg-light col-sm-12 col-md-11 col-lg-10 rounded shadow"
+    enctype="multipart/form-data"
+>      
     {% csrf_token %}
         {{form|bootstrap}}        
         <button type="submit" class="btn btn-primary">Guardar cambios</button>

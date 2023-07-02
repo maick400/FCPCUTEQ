@@ -18,6 +18,7 @@ urlpatterns = [
     path('update_estructura_tabla/<pk>/',update_estructura_tabla, name="update_estructura"),
     path('contable/',modulo_contable, name="mod_contable"),
     path('fondo/',modulo_fondo, name="mod_fondo"),
+    path('general/',modulo_general, name="mod_fondo"),
     path('admin-sistema/',modulo_sistema, name="mod_admin"),
 
     # path('tabla/',get_table, name="tabla"),

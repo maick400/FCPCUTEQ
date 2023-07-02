@@ -49,7 +49,7 @@ def editar_modulo(request, pk):
     form = Frm_Modulo(instance=modulo)
     pag_titulo = 'Editar módulo'
     if request.method == 'POST':
-        form = Frm_Modulo(request.POST, instance=modulo)
+        form = Frm_Modulo(request.POST, request.FILES, instance=modulo)
         if form.is_valid():
             form.save()
             messages.success(request,"Se ha editado correctamente el tipo de fondo")
